@@ -1,3 +1,3 @@
-module github.com/graphqleditor/stucco_proto
+module github.com/graphql-editor/stucco_proto
 
 go 1.16
