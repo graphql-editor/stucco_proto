@@ -1,0 +1,35 @@
+on:
+  push:
+    tags:
+    - 'v[0-9]+.[0-9]+.[0-9]+'
+name: Stucco proto release
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 14
+        registry-url: 'https://registry.npmjs.org'
+    - uses: actions/checkout@v2
+    - name: test gen
+      run: npm run test-gen
+    - name: Get npm cache directory
+      id: npm-cache
+      run: |
+        echo "::set-output name=dir::$(npm config get cache)"
+    - uses: actions/cache@v2
+      with:
+        path: ${{ steps.npm-cache.outputs.dir }}
+        key: ${{ hashFiles('package-lock.json') }}
+    - name: install deps
+      run: npm install
+      working-directory: ts
+    - name: install deps
+      run: npm run build
+      working-directory: ts
+    - name: run publish
+      run: npm publish
+      working-directory: ts
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

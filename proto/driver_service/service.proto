@@ -1,0 +1,20 @@
+syntax = "proto3";
+package stucco.driver_service;
+
+option go_package="github.com/graphqleditor/stucco_proto/driver_service";
+
+import "messages/messages.proto";
+
+service Driver {
+  rpc FieldResolve(stucco.messages.FieldResolveRequest) returns (stucco.messages.FieldResolveResponse);
+  rpc InterfaceResolveType(stucco.messages.InterfaceResolveTypeRequest) returns (stucco.messages.InterfaceResolveTypeResponse);
+  rpc ScalarParse(stucco.messages.ScalarParseRequest) returns (stucco.messages.ScalarParseResponse);
+  rpc ScalarSerialize(stucco.messages.ScalarSerializeRequest) returns (stucco.messages.ScalarSerializeResponse);
+  rpc UnionResolveType(stucco.messages.UnionResolveTypeRequest) returns (stucco.messages.UnionResolveTypeResponse);
+  rpc SetSecrets(stucco.messages.SetSecretsRequest) returns (stucco.messages.SetSecretsResponse);
+  rpc Stream(stucco.messages.StreamRequest) returns(stream stucco.messages.StreamMessage);
+  rpc Stdout(stucco.messages.ByteStreamRequest) returns(stream stucco.messages.ByteStream);
+  rpc Stderr(stucco.messages.ByteStreamRequest) returns(stream stucco.messages.ByteStream);
+  rpc SubscriptionConnection(stucco.messages.SubscriptionConnectionRequest) returns (stucco.messages.SubscriptionConnectionResponse);
+  rpc SubscriptionListen(stucco.messages.SubscriptionListenRequest) returns (stream stucco.messages.SubscriptionListenMessage);
+}
