@@ -1,6 +1,6 @@
 {
   "name": "stucco-ts-proto-gen",
-  "version": "0.7.4",
+  "version": "0.7.5",
   "description": "TypeScript GRPC generated files library for stucco",
   "main": "./lib/main.js",
   "types": "./lib/main.d.ts",
