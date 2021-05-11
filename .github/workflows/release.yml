@@ -22,10 +22,10 @@ jobs:
       with:
         path: ${{ steps.npm-cache.outputs.dir }}
         key: ${{ hashFiles('package-lock.json') }}
-    - name: install deps
+    - name: install ts gen deps
       run: npm install
       working-directory: ts
-    - name: install deps
+    - name: build ts gen
       run: npm run build
       working-directory: ts
     - name: run publish
