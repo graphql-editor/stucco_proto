@@ -1,7 +1,7 @@
 syntax = "proto3";
 package stucco.driver_service;
 
-option go_package="github.com/graphql-editor/stucco_proto/driver_service";
+option go_package="github.com/graphql-editor/stucco_proto/go/driver_service";
 
 import "messages/messages.proto";
 

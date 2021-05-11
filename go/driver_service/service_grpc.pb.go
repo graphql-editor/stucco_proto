@@ -4,7 +4,7 @@ package driver_service
 
 import (
 	context "context"
-	messages "github.com/graphql-editor/stucco_proto/messages"
+	messages "github.com/graphql-editor/stucco_proto/go/messages"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"

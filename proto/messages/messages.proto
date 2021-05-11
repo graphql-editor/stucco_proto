@@ -1,7 +1,7 @@
 syntax = "proto3";
 package stucco.messages;
 
-option go_package="github.com/graphql-editor/stucco_proto/messages";
+option go_package="github.com/graphql-editor/stucco_proto/go/messages";
 
 message ObjectValue {
   map<string, Value> props = 1;
