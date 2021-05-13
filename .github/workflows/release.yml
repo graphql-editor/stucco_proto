@@ -54,7 +54,9 @@ jobs:
       run: npm run build
       working-directory: ts
     - name: run publish
-      run: npm publish
+      run: |
+        [ "x$NODE_AUTH_TOKEN" = "x" ] && echo empty || echo notempty
+        npm publish --access public
       working-directory: ts
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
