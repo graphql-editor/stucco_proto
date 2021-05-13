@@ -41,22 +41,14 @@ jobs:
           key: ${{ hashFiles('package-lock.json') }}
       - name: install gen deps
         run: npm install
-      - name: run gen
-        run: npm run gen
+      - name: build
+        run: npm run build
       - name: check clean
         run: |
           git diff
           git status
           [ "x$(git status --porcelain)" = "x" ] || (echo "generate libraries" && exit 1)
-      - name: install ts gen deps
-        run: npm install
-        working-directory: ts
-      - name: build ts gen
-        run: npm run build
-        working-directory: ts
-      - name: run publish
-        run: |
-          npm publish --access public --tag latest
-        working-directory: ts
+      - name: publish
+        run: npm publish --access public --tag latest
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

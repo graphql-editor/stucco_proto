@@ -48,8 +48,8 @@ jobs:
         key: ${{ hashFiles('package-lock.json') }}
     - name: install gen deps
       run: npm install
-    - name: run gen
-      run: npm run gen
+    - name: build
+      run: npm run build
     - name: check clean
       run: |
         git diff

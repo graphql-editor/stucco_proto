@@ -1,8 +1,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-	"outDir": "./lib",
-    "rootDir": "./src",
+	"outDir": "./dist/lib",
+    "rootDir": "./ts",
     "strict":true,
     "baseUrl": ".",
     "sourceMap": true,
