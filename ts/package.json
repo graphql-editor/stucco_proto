@@ -33,7 +33,7 @@
   },
   "private": false,
   "publishConfig": {
-	  "tag": "latest",
-	  "access": "public"
+    "tag": "latest",
+    "access": "public"
   }
 }
