@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-	"outDir": "./dist/lib",
+	"outDir": "./dist/ts",
     "rootDir": "./ts",
     "strict":true,
     "baseUrl": ".",
@@ -19,5 +19,6 @@
     "types": ["node"],
     "skipLibCheck": true
   },
+  "include": ["ts/**/*.ts"],
   "exclude": ["node_modules"]
 }

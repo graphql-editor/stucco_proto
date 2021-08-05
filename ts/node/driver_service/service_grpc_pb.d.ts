@@ -5,7 +5,6 @@
 /* eslint-disable */
 
 import * as grpc from "@grpc/grpc-js";
-import {handleClientStreamingCall} from "@grpc/grpc-js/build/src/server-call";
 import * as driver_service_service_pb from "../driver_service/service_pb";
 import * as messages_messages_pb from "../messages/messages_pb";
 
