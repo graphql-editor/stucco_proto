@@ -101,6 +101,7 @@ message FieldResolveRequest {
   FieldResolveInfo info = 4;
   map<string, string> secrets = 5;
   Value protocol = 6;
+  Value subscritpionPayload = 7;
 }
 
 message FieldResolveResponse {
