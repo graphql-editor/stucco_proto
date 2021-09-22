@@ -4450,7 +4450,7 @@ proto.stucco.messages.FieldResolveRequest.toObject = function(includeInstance, m
     info: (f = msg.getInfo()) && proto.stucco.messages.FieldResolveInfo.toObject(includeInstance, f),
     secretsMap: (f = msg.getSecretsMap()) ? f.toObject(includeInstance, undefined) : [],
     protocol: (f = msg.getProtocol()) && proto.stucco.messages.Value.toObject(includeInstance, f),
-    subscritpionpayload: (f = msg.getSubscritpionpayload()) && proto.stucco.messages.Value.toObject(includeInstance, f)
+    subscriptionpayload: (f = msg.getSubscriptionpayload()) && proto.stucco.messages.Value.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4522,7 +4522,7 @@ proto.stucco.messages.FieldResolveRequest.deserializeBinaryFromReader = function
     case 7:
       var value = new proto.stucco.messages.Value;
       reader.readMessage(value,proto.stucco.messages.Value.deserializeBinaryFromReader);
-      msg.setSubscritpionpayload(value);
+      msg.setSubscriptionpayload(value);
       break;
     default:
       reader.skipField();
@@ -4593,7 +4593,7 @@ proto.stucco.messages.FieldResolveRequest.serializeBinaryToWriter = function(mes
       proto.stucco.messages.Value.serializeBinaryToWriter
     );
   }
-  f = message.getSubscritpionpayload();
+  f = message.getSubscriptionpayload();
   if (f != null) {
     writer.writeMessage(
       7,
@@ -4797,10 +4797,10 @@ proto.stucco.messages.FieldResolveRequest.prototype.hasProtocol = function() {
 
 
 /**
- * optional Value subscritpionPayload = 7;
+ * optional Value subscriptionPayload = 7;
  * @return {?proto.stucco.messages.Value}
  */
-proto.stucco.messages.FieldResolveRequest.prototype.getSubscritpionpayload = function() {
+proto.stucco.messages.FieldResolveRequest.prototype.getSubscriptionpayload = function() {
   return /** @type{?proto.stucco.messages.Value} */ (
     jspb.Message.getWrapperField(this, proto.stucco.messages.Value, 7));
 };
@@ -4810,7 +4810,7 @@ proto.stucco.messages.FieldResolveRequest.prototype.getSubscritpionpayload = fun
  * @param {?proto.stucco.messages.Value|undefined} value
  * @return {!proto.stucco.messages.FieldResolveRequest} returns this
 */
-proto.stucco.messages.FieldResolveRequest.prototype.setSubscritpionpayload = function(value) {
+proto.stucco.messages.FieldResolveRequest.prototype.setSubscriptionpayload = function(value) {
   return jspb.Message.setWrapperField(this, 7, value);
 };
 
@@ -4819,8 +4819,8 @@ proto.stucco.messages.FieldResolveRequest.prototype.setSubscritpionpayload = fun
  * Clears the message field making it undefined.
  * @return {!proto.stucco.messages.FieldResolveRequest} returns this
  */
-proto.stucco.messages.FieldResolveRequest.prototype.clearSubscritpionpayload = function() {
-  return this.setSubscritpionpayload(undefined);
+proto.stucco.messages.FieldResolveRequest.prototype.clearSubscriptionpayload = function() {
+  return this.setSubscriptionpayload(undefined);
 };
 
 
@@ -4828,7 +4828,7 @@ proto.stucco.messages.FieldResolveRequest.prototype.clearSubscritpionpayload = f
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.stucco.messages.FieldResolveRequest.prototype.hasSubscritpionpayload = function() {
+proto.stucco.messages.FieldResolveRequest.prototype.hasSubscriptionpayload = function() {
   return jspb.Message.getField(this, 7) != null;
 };
 

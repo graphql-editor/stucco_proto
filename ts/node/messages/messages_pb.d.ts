@@ -534,10 +534,10 @@ export class FieldResolveRequest extends jspb.Message {
     getProtocol(): Value | undefined;
     setProtocol(value?: Value): FieldResolveRequest;
 
-    hasSubscritpionpayload(): boolean;
-    clearSubscritpionpayload(): void;
-    getSubscritpionpayload(): Value | undefined;
-    setSubscritpionpayload(value?: Value): FieldResolveRequest;
+    hasSubscriptionpayload(): boolean;
+    clearSubscriptionpayload(): void;
+    getSubscriptionpayload(): Value | undefined;
+    setSubscriptionpayload(value?: Value): FieldResolveRequest;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): FieldResolveRequest.AsObject;
@@ -559,7 +559,7 @@ export namespace FieldResolveRequest {
 
         secretsMap: Array<[string, string]>,
         protocol?: Value.AsObject,
-        subscritpionpayload?: Value.AsObject,
+        subscriptionpayload?: Value.AsObject,
     }
 }
 
