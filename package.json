@@ -13,7 +13,7 @@
 		"clean": "rimraf dist",
 		"gen": "protoc-task-helper --enable-cjs",
 		"copyproto": "copyfiles proto/**/*.proto dist/",
-		"copynonts": "copyfiles ts/**/*.js ts/**/*.d.ts ts/**/*.cjs dist/",
+		"copynonts": "copyfiles ts/**/*.js ts/**/*.d.ts ts/**/*.cjs ts/**/*.d.cts dist/",
 		"build": "npm run clean && npm run gen && tsc && npm run copyproto && npm run copynonts"
 	},
 	"repository": {
