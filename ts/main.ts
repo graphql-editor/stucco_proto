@@ -1,2 +1,5 @@
-export * as messages from './node/messages/messages_pb.cjs';
-export * as driverService from './node/driver_service/service_grpc_pb.cjs';
+import _messages from './node/messages/messages_pb.cjs';
+import _driverService from './node/driver_service/service_grpc_pb.cjs';
+
+export const messages = { ..._messages };
+export const driverService = { ..._driverService };
