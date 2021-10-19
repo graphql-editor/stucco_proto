@@ -1,2 +1,7 @@
 node_modules
 dist
+/ts/node
+/ts/web
+/ts/main*.js
+/ts/main*.js.map
+/ts/main*.d.ts
