@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GRPC_WEB_VER: 1.2.1
-      PROTOC_GO: v1.26.0
+      PROTOC_GO: v1.27.1
       PROTOC_GRPC_GO: v1.1
     steps:
     - uses: actions/setup-go@v2
