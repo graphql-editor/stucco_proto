@@ -4,6 +4,7 @@
 	"description": "TypeScript GRPC generated files library for stucco",
 	"main": "./dist/ts/main.js",
 	"types": "./dist/ts/main.d.ts",
+	"type": "commonjs",
 	"browser": {
 		"./dist/ts/main.js": "./dist/ts/main.browser.js",
 		"./dist/ts/main.d.ts": "./dist/ts/main.browser.d.ts"
