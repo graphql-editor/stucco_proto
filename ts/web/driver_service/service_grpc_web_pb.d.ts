@@ -11,42 +11,42 @@ export class DriverClient {
   fieldResolve(
     request: messages_messages_pb.FieldResolveRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: messages_messages_pb.FieldResolveResponse) => void
   ): grpcWeb.ClientReadableStream<messages_messages_pb.FieldResolveResponse>;
 
   interfaceResolveType(
     request: messages_messages_pb.InterfaceResolveTypeRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: messages_messages_pb.InterfaceResolveTypeResponse) => void
   ): grpcWeb.ClientReadableStream<messages_messages_pb.InterfaceResolveTypeResponse>;
 
   scalarParse(
     request: messages_messages_pb.ScalarParseRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: messages_messages_pb.ScalarParseResponse) => void
   ): grpcWeb.ClientReadableStream<messages_messages_pb.ScalarParseResponse>;
 
   scalarSerialize(
     request: messages_messages_pb.ScalarSerializeRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: messages_messages_pb.ScalarSerializeResponse) => void
   ): grpcWeb.ClientReadableStream<messages_messages_pb.ScalarSerializeResponse>;
 
   unionResolveType(
     request: messages_messages_pb.UnionResolveTypeRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: messages_messages_pb.UnionResolveTypeResponse) => void
   ): grpcWeb.ClientReadableStream<messages_messages_pb.UnionResolveTypeResponse>;
 
   setSecrets(
     request: messages_messages_pb.SetSecretsRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: messages_messages_pb.SetSecretsResponse) => void
   ): grpcWeb.ClientReadableStream<messages_messages_pb.SetSecretsResponse>;
 
@@ -68,7 +68,7 @@ export class DriverClient {
   subscriptionConnection(
     request: messages_messages_pb.SubscriptionConnectionRequest,
     metadata: grpcWeb.Metadata | undefined,
-    callback: (err: grpcWeb.Error,
+    callback: (err: grpcWeb.RpcError,
                response: messages_messages_pb.SubscriptionConnectionResponse) => void
   ): grpcWeb.ClientReadableStream<messages_messages_pb.SubscriptionConnectionResponse>;
 

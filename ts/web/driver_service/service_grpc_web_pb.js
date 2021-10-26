@@ -24,7 +24,7 @@ proto.stucco.driver_service = require('./service_pb.js');
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -32,7 +32,7 @@ proto.stucco.driver_service = require('./service_pb.js');
 proto.stucco.driver_service.DriverClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -50,7 +50,7 @@ proto.stucco.driver_service.DriverClient =
 /**
  * @param {string} hostname
  * @param {?Object} credentials
- * @param {?Object} options
+ * @param {?grpc.web.ClientOptions} options
  * @constructor
  * @struct
  * @final
@@ -58,7 +58,7 @@ proto.stucco.driver_service.DriverClient =
 proto.stucco.driver_service.DriverPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
-  options['format'] = 'text';
+  options.format = 'text';
 
   /**
    * @private @const {!grpc.web.GrpcWebClientBase} The client
@@ -96,30 +96,11 @@ const methodDescriptor_Driver_FieldResolve = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.stucco.messages.FieldResolveRequest,
- *   !proto.stucco.messages.FieldResolveResponse>}
- */
-const methodInfo_Driver_FieldResolve = new grpc.web.AbstractClientBase.MethodInfo(
-  messages_messages_pb.FieldResolveResponse,
-  /**
-   * @param {!proto.stucco.messages.FieldResolveRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  messages_messages_pb.FieldResolveResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.stucco.messages.FieldResolveRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.stucco.messages.FieldResolveResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.stucco.messages.FieldResolveResponse)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.stucco.messages.FieldResolveResponse>|undefined}
  *     The XHR Node Readable Stream
@@ -138,7 +119,7 @@ proto.stucco.driver_service.DriverClient.prototype.fieldResolve =
 /**
  * @param {!proto.stucco.messages.FieldResolveRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.stucco.messages.FieldResolveResponse>}
  *     Promise that resolves to the response
@@ -176,30 +157,11 @@ const methodDescriptor_Driver_InterfaceResolveType = new grpc.web.MethodDescript
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.stucco.messages.InterfaceResolveTypeRequest,
- *   !proto.stucco.messages.InterfaceResolveTypeResponse>}
- */
-const methodInfo_Driver_InterfaceResolveType = new grpc.web.AbstractClientBase.MethodInfo(
-  messages_messages_pb.InterfaceResolveTypeResponse,
-  /**
-   * @param {!proto.stucco.messages.InterfaceResolveTypeRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  messages_messages_pb.InterfaceResolveTypeResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.stucco.messages.InterfaceResolveTypeRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.stucco.messages.InterfaceResolveTypeResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.stucco.messages.InterfaceResolveTypeResponse)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.stucco.messages.InterfaceResolveTypeResponse>|undefined}
  *     The XHR Node Readable Stream
@@ -218,7 +180,7 @@ proto.stucco.driver_service.DriverClient.prototype.interfaceResolveType =
 /**
  * @param {!proto.stucco.messages.InterfaceResolveTypeRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.stucco.messages.InterfaceResolveTypeResponse>}
  *     Promise that resolves to the response
@@ -256,30 +218,11 @@ const methodDescriptor_Driver_ScalarParse = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.stucco.messages.ScalarParseRequest,
- *   !proto.stucco.messages.ScalarParseResponse>}
- */
-const methodInfo_Driver_ScalarParse = new grpc.web.AbstractClientBase.MethodInfo(
-  messages_messages_pb.ScalarParseResponse,
-  /**
-   * @param {!proto.stucco.messages.ScalarParseRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  messages_messages_pb.ScalarParseResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.stucco.messages.ScalarParseRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.stucco.messages.ScalarParseResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.stucco.messages.ScalarParseResponse)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.stucco.messages.ScalarParseResponse>|undefined}
  *     The XHR Node Readable Stream
@@ -298,7 +241,7 @@ proto.stucco.driver_service.DriverClient.prototype.scalarParse =
 /**
  * @param {!proto.stucco.messages.ScalarParseRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.stucco.messages.ScalarParseResponse>}
  *     Promise that resolves to the response
@@ -336,30 +279,11 @@ const methodDescriptor_Driver_ScalarSerialize = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.stucco.messages.ScalarSerializeRequest,
- *   !proto.stucco.messages.ScalarSerializeResponse>}
- */
-const methodInfo_Driver_ScalarSerialize = new grpc.web.AbstractClientBase.MethodInfo(
-  messages_messages_pb.ScalarSerializeResponse,
-  /**
-   * @param {!proto.stucco.messages.ScalarSerializeRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  messages_messages_pb.ScalarSerializeResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.stucco.messages.ScalarSerializeRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.stucco.messages.ScalarSerializeResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.stucco.messages.ScalarSerializeResponse)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.stucco.messages.ScalarSerializeResponse>|undefined}
  *     The XHR Node Readable Stream
@@ -378,7 +302,7 @@ proto.stucco.driver_service.DriverClient.prototype.scalarSerialize =
 /**
  * @param {!proto.stucco.messages.ScalarSerializeRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.stucco.messages.ScalarSerializeResponse>}
  *     Promise that resolves to the response
@@ -416,30 +340,11 @@ const methodDescriptor_Driver_UnionResolveType = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.stucco.messages.UnionResolveTypeRequest,
- *   !proto.stucco.messages.UnionResolveTypeResponse>}
- */
-const methodInfo_Driver_UnionResolveType = new grpc.web.AbstractClientBase.MethodInfo(
-  messages_messages_pb.UnionResolveTypeResponse,
-  /**
-   * @param {!proto.stucco.messages.UnionResolveTypeRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  messages_messages_pb.UnionResolveTypeResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.stucco.messages.UnionResolveTypeRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.stucco.messages.UnionResolveTypeResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.stucco.messages.UnionResolveTypeResponse)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.stucco.messages.UnionResolveTypeResponse>|undefined}
  *     The XHR Node Readable Stream
@@ -458,7 +363,7 @@ proto.stucco.driver_service.DriverClient.prototype.unionResolveType =
 /**
  * @param {!proto.stucco.messages.UnionResolveTypeRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.stucco.messages.UnionResolveTypeResponse>}
  *     Promise that resolves to the response
@@ -496,30 +401,11 @@ const methodDescriptor_Driver_SetSecrets = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.stucco.messages.SetSecretsRequest,
- *   !proto.stucco.messages.SetSecretsResponse>}
- */
-const methodInfo_Driver_SetSecrets = new grpc.web.AbstractClientBase.MethodInfo(
-  messages_messages_pb.SetSecretsResponse,
-  /**
-   * @param {!proto.stucco.messages.SetSecretsRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  messages_messages_pb.SetSecretsResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.stucco.messages.SetSecretsRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.stucco.messages.SetSecretsResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.stucco.messages.SetSecretsResponse)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.stucco.messages.SetSecretsResponse>|undefined}
  *     The XHR Node Readable Stream
@@ -538,7 +424,7 @@ proto.stucco.driver_service.DriverClient.prototype.setSecrets =
 /**
  * @param {!proto.stucco.messages.SetSecretsRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.stucco.messages.SetSecretsResponse>}
  *     Promise that resolves to the response
@@ -576,27 +462,8 @@ const methodDescriptor_Driver_Stream = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.stucco.messages.StreamRequest,
- *   !proto.stucco.messages.StreamMessage>}
- */
-const methodInfo_Driver_Stream = new grpc.web.AbstractClientBase.MethodInfo(
-  messages_messages_pb.StreamMessage,
-  /**
-   * @param {!proto.stucco.messages.StreamRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  messages_messages_pb.StreamMessage.deserializeBinary
-);
-
-
-/**
  * @param {!proto.stucco.messages.StreamRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.stucco.messages.StreamMessage>}
  *     The XHR Node Readable Stream
@@ -613,7 +480,7 @@ proto.stucco.driver_service.DriverClient.prototype.stream =
 
 /**
  * @param {!proto.stucco.messages.StreamRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.stucco.messages.StreamMessage>}
  *     The XHR Node Readable Stream
@@ -651,27 +518,8 @@ const methodDescriptor_Driver_Stdout = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.stucco.messages.ByteStreamRequest,
- *   !proto.stucco.messages.ByteStream>}
- */
-const methodInfo_Driver_Stdout = new grpc.web.AbstractClientBase.MethodInfo(
-  messages_messages_pb.ByteStream,
-  /**
-   * @param {!proto.stucco.messages.ByteStreamRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  messages_messages_pb.ByteStream.deserializeBinary
-);
-
-
-/**
  * @param {!proto.stucco.messages.ByteStreamRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.stucco.messages.ByteStream>}
  *     The XHR Node Readable Stream
@@ -688,7 +536,7 @@ proto.stucco.driver_service.DriverClient.prototype.stdout =
 
 /**
  * @param {!proto.stucco.messages.ByteStreamRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.stucco.messages.ByteStream>}
  *     The XHR Node Readable Stream
@@ -726,27 +574,8 @@ const methodDescriptor_Driver_Stderr = new grpc.web.MethodDescriptor(
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.stucco.messages.ByteStreamRequest,
- *   !proto.stucco.messages.ByteStream>}
- */
-const methodInfo_Driver_Stderr = new grpc.web.AbstractClientBase.MethodInfo(
-  messages_messages_pb.ByteStream,
-  /**
-   * @param {!proto.stucco.messages.ByteStreamRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  messages_messages_pb.ByteStream.deserializeBinary
-);
-
-
-/**
  * @param {!proto.stucco.messages.ByteStreamRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.stucco.messages.ByteStream>}
  *     The XHR Node Readable Stream
@@ -763,7 +592,7 @@ proto.stucco.driver_service.DriverClient.prototype.stderr =
 
 /**
  * @param {!proto.stucco.messages.ByteStreamRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.stucco.messages.ByteStream>}
  *     The XHR Node Readable Stream
@@ -801,30 +630,11 @@ const methodDescriptor_Driver_SubscriptionConnection = new grpc.web.MethodDescri
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.stucco.messages.SubscriptionConnectionRequest,
- *   !proto.stucco.messages.SubscriptionConnectionResponse>}
- */
-const methodInfo_Driver_SubscriptionConnection = new grpc.web.AbstractClientBase.MethodInfo(
-  messages_messages_pb.SubscriptionConnectionResponse,
-  /**
-   * @param {!proto.stucco.messages.SubscriptionConnectionRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  messages_messages_pb.SubscriptionConnectionResponse.deserializeBinary
-);
-
-
-/**
  * @param {!proto.stucco.messages.SubscriptionConnectionRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.stucco.messages.SubscriptionConnectionResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.stucco.messages.SubscriptionConnectionResponse)}
  *     callback The callback function(error, response)
  * @return {!grpc.web.ClientReadableStream<!proto.stucco.messages.SubscriptionConnectionResponse>|undefined}
  *     The XHR Node Readable Stream
@@ -843,7 +653,7 @@ proto.stucco.driver_service.DriverClient.prototype.subscriptionConnection =
 /**
  * @param {!proto.stucco.messages.SubscriptionConnectionRequest} request The
  *     request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.stucco.messages.SubscriptionConnectionResponse>}
  *     Promise that resolves to the response
@@ -881,27 +691,8 @@ const methodDescriptor_Driver_SubscriptionListen = new grpc.web.MethodDescriptor
 
 
 /**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.stucco.messages.SubscriptionListenRequest,
- *   !proto.stucco.messages.SubscriptionListenMessage>}
- */
-const methodInfo_Driver_SubscriptionListen = new grpc.web.AbstractClientBase.MethodInfo(
-  messages_messages_pb.SubscriptionListenMessage,
-  /**
-   * @param {!proto.stucco.messages.SubscriptionListenRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  messages_messages_pb.SubscriptionListenMessage.deserializeBinary
-);
-
-
-/**
  * @param {!proto.stucco.messages.SubscriptionListenRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.stucco.messages.SubscriptionListenMessage>}
  *     The XHR Node Readable Stream
@@ -918,7 +709,7 @@ proto.stucco.driver_service.DriverClient.prototype.subscriptionListen =
 
 /**
  * @param {!proto.stucco.messages.SubscriptionListenRequest} request The request proto
- * @param {?Object<string, string>} metadata User defined
+ * @param {?Object<string, string>=} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.stucco.messages.SubscriptionListenMessage>}
  *     The XHR Node Readable Stream
