@@ -19,6 +19,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type DriverClient interface {
+	Config(ctx context.Context, in *messages.ConfigRequest, opts ...grpc.CallOption) (*messages.ConfigResponse, error)
 	FieldResolve(ctx context.Context, in *messages.FieldResolveRequest, opts ...grpc.CallOption) (*messages.FieldResolveResponse, error)
 	InterfaceResolveType(ctx context.Context, in *messages.InterfaceResolveTypeRequest, opts ...grpc.CallOption) (*messages.InterfaceResolveTypeResponse, error)
 	ScalarParse(ctx context.Context, in *messages.ScalarParseRequest, opts ...grpc.CallOption) (*messages.ScalarParseResponse, error)
@@ -38,6 +39,15 @@ type driverClient struct {
 
 func NewDriverClient(cc grpc.ClientConnInterface) DriverClient {
 	return &driverClient{cc}
+}
+
+func (c *driverClient) Config(ctx context.Context, in *messages.ConfigRequest, opts ...grpc.CallOption) (*messages.ConfigResponse, error) {
+	out := new(messages.ConfigResponse)
+	err := c.cc.Invoke(ctx, "/stucco.driver_service.Driver/Config", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *driverClient) FieldResolve(ctx context.Context, in *messages.FieldResolveRequest, opts ...grpc.CallOption) (*messages.FieldResolveResponse, error) {
@@ -235,6 +245,7 @@ func (x *driverSubscriptionListenClient) Recv() (*messages.SubscriptionListenMes
 // All implementations must embed UnimplementedDriverServer
 // for forward compatibility
 type DriverServer interface {
+	Config(context.Context, *messages.ConfigRequest) (*messages.ConfigResponse, error)
 	FieldResolve(context.Context, *messages.FieldResolveRequest) (*messages.FieldResolveResponse, error)
 	InterfaceResolveType(context.Context, *messages.InterfaceResolveTypeRequest) (*messages.InterfaceResolveTypeResponse, error)
 	ScalarParse(context.Context, *messages.ScalarParseRequest) (*messages.ScalarParseResponse, error)
@@ -253,6 +264,9 @@ type DriverServer interface {
 type UnimplementedDriverServer struct {
 }
 
+func (UnimplementedDriverServer) Config(context.Context, *messages.ConfigRequest) (*messages.ConfigResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Config not implemented")
+}
 func (UnimplementedDriverServer) FieldResolve(context.Context, *messages.FieldResolveRequest) (*messages.FieldResolveResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FieldResolve not implemented")
 }
@@ -297,6 +311,24 @@ type UnsafeDriverServer interface {
 
 func RegisterDriverServer(s grpc.ServiceRegistrar, srv DriverServer) {
 	s.RegisterService(&Driver_ServiceDesc, srv)
+}
+
+func _Driver_Config_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(messages.ConfigRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DriverServer).Config(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/stucco.driver_service.Driver/Config",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DriverServer).Config(ctx, req.(*messages.ConfigRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _Driver_FieldResolve_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -516,6 +548,10 @@ var Driver_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "stucco.driver_service.Driver",
 	HandlerType: (*DriverServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "Config",
+			Handler:    _Driver_Config_Handler,
+		},
 		{
 			MethodName: "FieldResolve",
 			Handler:    _Driver_FieldResolve_Handler,

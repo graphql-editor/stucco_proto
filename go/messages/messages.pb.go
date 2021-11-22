@@ -20,6 +20,55 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type ConfigResponse_SubscriptionConfig_SubscriptionKind int32
+
+const (
+	ConfigResponse_SubscriptionConfig_BLOCKING ConfigResponse_SubscriptionConfig_SubscriptionKind = 0
+	ConfigResponse_SubscriptionConfig_EXTERNAL ConfigResponse_SubscriptionConfig_SubscriptionKind = 1
+	ConfigResponse_SubscriptionConfig_REDIRECT ConfigResponse_SubscriptionConfig_SubscriptionKind = 2
+)
+
+// Enum value maps for ConfigResponse_SubscriptionConfig_SubscriptionKind.
+var (
+	ConfigResponse_SubscriptionConfig_SubscriptionKind_name = map[int32]string{
+		0: "BLOCKING",
+		1: "EXTERNAL",
+		2: "REDIRECT",
+	}
+	ConfigResponse_SubscriptionConfig_SubscriptionKind_value = map[string]int32{
+		"BLOCKING": 0,
+		"EXTERNAL": 1,
+		"REDIRECT": 2,
+	}
+)
+
+func (x ConfigResponse_SubscriptionConfig_SubscriptionKind) Enum() *ConfigResponse_SubscriptionConfig_SubscriptionKind {
+	p := new(ConfigResponse_SubscriptionConfig_SubscriptionKind)
+	*p = x
+	return p
+}
+
+func (x ConfigResponse_SubscriptionConfig_SubscriptionKind) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ConfigResponse_SubscriptionConfig_SubscriptionKind) Descriptor() protoreflect.EnumDescriptor {
+	return file_messages_messages_proto_enumTypes[0].Descriptor()
+}
+
+func (ConfigResponse_SubscriptionConfig_SubscriptionKind) Type() protoreflect.EnumType {
+	return &file_messages_messages_proto_enumTypes[0]
+}
+
+func (x ConfigResponse_SubscriptionConfig_SubscriptionKind) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ConfigResponse_SubscriptionConfig_SubscriptionKind.Descriptor instead.
+func (ConfigResponse_SubscriptionConfig_SubscriptionKind) EnumDescriptor() ([]byte, []int) {
+	return file_messages_messages_proto_rawDescGZIP(), []int{39, 6, 0}
+}
+
 type ObjectValue struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -2541,6 +2590,564 @@ func (x *SubscriptionListenMessage) GetPayload() *Value {
 	return nil
 }
 
+type ConfigRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *ConfigRequest) Reset() {
+	*x = ConfigRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_messages_messages_proto_msgTypes[38]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ConfigRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfigRequest) ProtoMessage() {}
+
+func (x *ConfigRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_messages_messages_proto_msgTypes[38]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfigRequest.ProtoReflect.Descriptor instead.
+func (*ConfigRequest) Descriptor() ([]byte, []int) {
+	return file_messages_messages_proto_rawDescGZIP(), []int{38}
+}
+
+type ConfigResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Environment         *ConfigResponse_Environment                   `protobuf:"bytes,1,opt,name=environment,proto3" json:"environment,omitempty"`
+	Interfaces          map[string]*ConfigResponse_InterfaceConfig    `protobuf:"bytes,2,rep,name=interfaces,proto3" json:"interfaces,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Resolvers           map[string]*ConfigResponse_ResolverConfig     `protobuf:"bytes,3,rep,name=resolvers,proto3" json:"resolvers,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Scalars             map[string]*ConfigResponse_ScalarConfig       `protobuf:"bytes,4,rep,name=scalars,proto3" json:"scalars,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Schema              string                                        `protobuf:"bytes,5,opt,name=schema,proto3" json:"schema,omitempty"`
+	Unions              map[string]*ConfigResponse_UnionConfig        `protobuf:"bytes,6,rep,name=unions,proto3" json:"unions,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Secrets             *ConfigResponse_SecretsConfig                 `protobuf:"bytes,7,opt,name=secrets,proto3" json:"secrets,omitempty"`
+	Subscriptions       *ConfigResponse_SubscriptionConfig            `protobuf:"bytes,8,opt,name=subscriptions,proto3" json:"subscriptions,omitempty"`
+	SubscriptionConfigs map[string]*ConfigResponse_SubscriptionConfig `protobuf:"bytes,9,rep,name=subscriptionConfigs,proto3" json:"subscriptionConfigs,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Error               *Error                                        `protobuf:"bytes,10,opt,name=error,proto3" json:"error,omitempty"`
+}
+
+func (x *ConfigResponse) Reset() {
+	*x = ConfigResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_messages_messages_proto_msgTypes[39]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ConfigResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfigResponse) ProtoMessage() {}
+
+func (x *ConfigResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_messages_messages_proto_msgTypes[39]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfigResponse.ProtoReflect.Descriptor instead.
+func (*ConfigResponse) Descriptor() ([]byte, []int) {
+	return file_messages_messages_proto_rawDescGZIP(), []int{39}
+}
+
+func (x *ConfigResponse) GetEnvironment() *ConfigResponse_Environment {
+	if x != nil {
+		return x.Environment
+	}
+	return nil
+}
+
+func (x *ConfigResponse) GetInterfaces() map[string]*ConfigResponse_InterfaceConfig {
+	if x != nil {
+		return x.Interfaces
+	}
+	return nil
+}
+
+func (x *ConfigResponse) GetResolvers() map[string]*ConfigResponse_ResolverConfig {
+	if x != nil {
+		return x.Resolvers
+	}
+	return nil
+}
+
+func (x *ConfigResponse) GetScalars() map[string]*ConfigResponse_ScalarConfig {
+	if x != nil {
+		return x.Scalars
+	}
+	return nil
+}
+
+func (x *ConfigResponse) GetSchema() string {
+	if x != nil {
+		return x.Schema
+	}
+	return ""
+}
+
+func (x *ConfigResponse) GetUnions() map[string]*ConfigResponse_UnionConfig {
+	if x != nil {
+		return x.Unions
+	}
+	return nil
+}
+
+func (x *ConfigResponse) GetSecrets() *ConfigResponse_SecretsConfig {
+	if x != nil {
+		return x.Secrets
+	}
+	return nil
+}
+
+func (x *ConfigResponse) GetSubscriptions() *ConfigResponse_SubscriptionConfig {
+	if x != nil {
+		return x.Subscriptions
+	}
+	return nil
+}
+
+func (x *ConfigResponse) GetSubscriptionConfigs() map[string]*ConfigResponse_SubscriptionConfig {
+	if x != nil {
+		return x.SubscriptionConfigs
+	}
+	return nil
+}
+
+func (x *ConfigResponse) GetError() *Error {
+	if x != nil {
+		return x.Error
+	}
+	return nil
+}
+
+type ConfigResponse_Environment struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Provider string `protobuf:"bytes,1,opt,name=provider,proto3" json:"provider,omitempty"`
+	Runtime  string `protobuf:"bytes,2,opt,name=runtime,proto3" json:"runtime,omitempty"`
+}
+
+func (x *ConfigResponse_Environment) Reset() {
+	*x = ConfigResponse_Environment{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_messages_messages_proto_msgTypes[53]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ConfigResponse_Environment) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfigResponse_Environment) ProtoMessage() {}
+
+func (x *ConfigResponse_Environment) ProtoReflect() protoreflect.Message {
+	mi := &file_messages_messages_proto_msgTypes[53]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfigResponse_Environment.ProtoReflect.Descriptor instead.
+func (*ConfigResponse_Environment) Descriptor() ([]byte, []int) {
+	return file_messages_messages_proto_rawDescGZIP(), []int{39, 0}
+}
+
+func (x *ConfigResponse_Environment) GetProvider() string {
+	if x != nil {
+		return x.Provider
+	}
+	return ""
+}
+
+func (x *ConfigResponse_Environment) GetRuntime() string {
+	if x != nil {
+		return x.Runtime
+	}
+	return ""
+}
+
+type ConfigResponse_InterfaceConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Environment *ConfigResponse_Environment `protobuf:"bytes,1,opt,name=environment,proto3" json:"environment,omitempty"`
+	ResolveType *Function                   `protobuf:"bytes,2,opt,name=resolveType,proto3" json:"resolveType,omitempty"`
+}
+
+func (x *ConfigResponse_InterfaceConfig) Reset() {
+	*x = ConfigResponse_InterfaceConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_messages_messages_proto_msgTypes[54]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ConfigResponse_InterfaceConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfigResponse_InterfaceConfig) ProtoMessage() {}
+
+func (x *ConfigResponse_InterfaceConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_messages_messages_proto_msgTypes[54]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfigResponse_InterfaceConfig.ProtoReflect.Descriptor instead.
+func (*ConfigResponse_InterfaceConfig) Descriptor() ([]byte, []int) {
+	return file_messages_messages_proto_rawDescGZIP(), []int{39, 1}
+}
+
+func (x *ConfigResponse_InterfaceConfig) GetEnvironment() *ConfigResponse_Environment {
+	if x != nil {
+		return x.Environment
+	}
+	return nil
+}
+
+func (x *ConfigResponse_InterfaceConfig) GetResolveType() *Function {
+	if x != nil {
+		return x.ResolveType
+	}
+	return nil
+}
+
+type ConfigResponse_ResolverConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Environment *ConfigResponse_Environment `protobuf:"bytes,1,opt,name=environment,proto3" json:"environment,omitempty"`
+	Resolve     *Function                   `protobuf:"bytes,2,opt,name=resolve,proto3" json:"resolve,omitempty"`
+}
+
+func (x *ConfigResponse_ResolverConfig) Reset() {
+	*x = ConfigResponse_ResolverConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_messages_messages_proto_msgTypes[55]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ConfigResponse_ResolverConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfigResponse_ResolverConfig) ProtoMessage() {}
+
+func (x *ConfigResponse_ResolverConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_messages_messages_proto_msgTypes[55]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfigResponse_ResolverConfig.ProtoReflect.Descriptor instead.
+func (*ConfigResponse_ResolverConfig) Descriptor() ([]byte, []int) {
+	return file_messages_messages_proto_rawDescGZIP(), []int{39, 2}
+}
+
+func (x *ConfigResponse_ResolverConfig) GetEnvironment() *ConfigResponse_Environment {
+	if x != nil {
+		return x.Environment
+	}
+	return nil
+}
+
+func (x *ConfigResponse_ResolverConfig) GetResolve() *Function {
+	if x != nil {
+		return x.Resolve
+	}
+	return nil
+}
+
+type ConfigResponse_ScalarConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Environment *ConfigResponse_Environment `protobuf:"bytes,1,opt,name=environment,proto3" json:"environment,omitempty"`
+	Parse       *Function                   `protobuf:"bytes,2,opt,name=parse,proto3" json:"parse,omitempty"`
+	Serialize   *Function                   `protobuf:"bytes,3,opt,name=serialize,proto3" json:"serialize,omitempty"`
+}
+
+func (x *ConfigResponse_ScalarConfig) Reset() {
+	*x = ConfigResponse_ScalarConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_messages_messages_proto_msgTypes[56]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ConfigResponse_ScalarConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfigResponse_ScalarConfig) ProtoMessage() {}
+
+func (x *ConfigResponse_ScalarConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_messages_messages_proto_msgTypes[56]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfigResponse_ScalarConfig.ProtoReflect.Descriptor instead.
+func (*ConfigResponse_ScalarConfig) Descriptor() ([]byte, []int) {
+	return file_messages_messages_proto_rawDescGZIP(), []int{39, 3}
+}
+
+func (x *ConfigResponse_ScalarConfig) GetEnvironment() *ConfigResponse_Environment {
+	if x != nil {
+		return x.Environment
+	}
+	return nil
+}
+
+func (x *ConfigResponse_ScalarConfig) GetParse() *Function {
+	if x != nil {
+		return x.Parse
+	}
+	return nil
+}
+
+func (x *ConfigResponse_ScalarConfig) GetSerialize() *Function {
+	if x != nil {
+		return x.Serialize
+	}
+	return nil
+}
+
+type ConfigResponse_UnionConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Environment *ConfigResponse_Environment `protobuf:"bytes,1,opt,name=environment,proto3" json:"environment,omitempty"`
+	ResolveType *Function                   `protobuf:"bytes,2,opt,name=resolveType,proto3" json:"resolveType,omitempty"`
+}
+
+func (x *ConfigResponse_UnionConfig) Reset() {
+	*x = ConfigResponse_UnionConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_messages_messages_proto_msgTypes[57]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ConfigResponse_UnionConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfigResponse_UnionConfig) ProtoMessage() {}
+
+func (x *ConfigResponse_UnionConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_messages_messages_proto_msgTypes[57]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfigResponse_UnionConfig.ProtoReflect.Descriptor instead.
+func (*ConfigResponse_UnionConfig) Descriptor() ([]byte, []int) {
+	return file_messages_messages_proto_rawDescGZIP(), []int{39, 4}
+}
+
+func (x *ConfigResponse_UnionConfig) GetEnvironment() *ConfigResponse_Environment {
+	if x != nil {
+		return x.Environment
+	}
+	return nil
+}
+
+func (x *ConfigResponse_UnionConfig) GetResolveType() *Function {
+	if x != nil {
+		return x.ResolveType
+	}
+	return nil
+}
+
+type ConfigResponse_SecretsConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Secrets map[string]string `protobuf:"bytes,1,rep,name=secrets,proto3" json:"secrets,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+}
+
+func (x *ConfigResponse_SecretsConfig) Reset() {
+	*x = ConfigResponse_SecretsConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_messages_messages_proto_msgTypes[58]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ConfigResponse_SecretsConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfigResponse_SecretsConfig) ProtoMessage() {}
+
+func (x *ConfigResponse_SecretsConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_messages_messages_proto_msgTypes[58]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfigResponse_SecretsConfig.ProtoReflect.Descriptor instead.
+func (*ConfigResponse_SecretsConfig) Descriptor() ([]byte, []int) {
+	return file_messages_messages_proto_rawDescGZIP(), []int{39, 5}
+}
+
+func (x *ConfigResponse_SecretsConfig) GetSecrets() map[string]string {
+	if x != nil {
+		return x.Secrets
+	}
+	return nil
+}
+
+type ConfigResponse_SubscriptionConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Environment      *ConfigResponse_Environment                        `protobuf:"bytes,1,opt,name=environment,proto3" json:"environment,omitempty"`
+	Kind             ConfigResponse_SubscriptionConfig_SubscriptionKind `protobuf:"varint,2,opt,name=kind,proto3,enum=stucco.messages.ConfigResponse_SubscriptionConfig_SubscriptionKind" json:"kind,omitempty"`
+	CreateConnection *Function                                          `protobuf:"bytes,3,opt,name=createConnection,proto3" json:"createConnection,omitempty"`
+	Listen           *Function                                          `protobuf:"bytes,4,opt,name=listen,proto3" json:"listen,omitempty"`
+}
+
+func (x *ConfigResponse_SubscriptionConfig) Reset() {
+	*x = ConfigResponse_SubscriptionConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_messages_messages_proto_msgTypes[59]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ConfigResponse_SubscriptionConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConfigResponse_SubscriptionConfig) ProtoMessage() {}
+
+func (x *ConfigResponse_SubscriptionConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_messages_messages_proto_msgTypes[59]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConfigResponse_SubscriptionConfig.ProtoReflect.Descriptor instead.
+func (*ConfigResponse_SubscriptionConfig) Descriptor() ([]byte, []int) {
+	return file_messages_messages_proto_rawDescGZIP(), []int{39, 6}
+}
+
+func (x *ConfigResponse_SubscriptionConfig) GetEnvironment() *ConfigResponse_Environment {
+	if x != nil {
+		return x.Environment
+	}
+	return nil
+}
+
+func (x *ConfigResponse_SubscriptionConfig) GetKind() ConfigResponse_SubscriptionConfig_SubscriptionKind {
+	if x != nil {
+		return x.Kind
+	}
+	return ConfigResponse_SubscriptionConfig_BLOCKING
+}
+
+func (x *ConfigResponse_SubscriptionConfig) GetCreateConnection() *Function {
+	if x != nil {
+		return x.CreateConnection
+	}
+	return nil
+}
+
+func (x *ConfigResponse_SubscriptionConfig) GetListen() *Function {
+	if x != nil {
+		return x.Listen
+	}
+	return nil
+}
+
 var File_messages_messages_proto protoreflect.FileDescriptor
 
 var file_messages_messages_proto_rawDesc = []byte{
@@ -3037,11 +3644,173 @@ var file_messages_messages_proto_rawDesc = []byte{
 	0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x04, 0x6e, 0x65, 0x78, 0x74, 0x12, 0x30, 0x0a, 0x07,
 	0x70, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e,
 	0x73, 0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x2e,
-	0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x07, 0x70, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x42, 0x34,
-	0x5a, 0x32, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x67, 0x72, 0x61,
-	0x70, 0x68, 0x71, 0x6c, 0x2d, 0x65, 0x64, 0x69, 0x74, 0x6f, 0x72, 0x2f, 0x73, 0x74, 0x75, 0x63,
-	0x63, 0x6f, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x2f, 0x6d, 0x65, 0x73, 0x73,
-	0x61, 0x67, 0x65, 0x73, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x07, 0x70, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x22, 0x0f,
+	0x0a, 0x0d, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22,
+	0x89, 0x14, 0x0a, 0x0e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x12, 0x4d, 0x0a, 0x0b, 0x65, 0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e,
+	0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2b, 0x2e, 0x73, 0x74, 0x75, 0x63, 0x63, 0x6f,
+	0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x45, 0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e,
+	0x6d, 0x65, 0x6e, 0x74, 0x52, 0x0b, 0x65, 0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e,
+	0x74, 0x12, 0x4f, 0x0a, 0x0a, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x73, 0x18,
+	0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2f, 0x2e, 0x73, 0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e, 0x6d,
+	0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65,
+	0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x0a, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63,
+	0x65, 0x73, 0x12, 0x4c, 0x0a, 0x09, 0x72, 0x65, 0x73, 0x6f, 0x6c, 0x76, 0x65, 0x72, 0x73, 0x18,
+	0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2e, 0x2e, 0x73, 0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e, 0x6d,
+	0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x52, 0x65, 0x73, 0x6f, 0x6c, 0x76, 0x65, 0x72, 0x73,
+	0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x09, 0x72, 0x65, 0x73, 0x6f, 0x6c, 0x76, 0x65, 0x72, 0x73,
+	0x12, 0x46, 0x0a, 0x07, 0x73, 0x63, 0x61, 0x6c, 0x61, 0x72, 0x73, 0x18, 0x04, 0x20, 0x03, 0x28,
+	0x0b, 0x32, 0x2c, 0x2e, 0x73, 0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61,
+	0x67, 0x65, 0x73, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x2e, 0x53, 0x63, 0x61, 0x6c, 0x61, 0x72, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52,
+	0x07, 0x73, 0x63, 0x61, 0x6c, 0x61, 0x72, 0x73, 0x12, 0x16, 0x0a, 0x06, 0x73, 0x63, 0x68, 0x65,
+	0x6d, 0x61, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x73, 0x63, 0x68, 0x65, 0x6d, 0x61,
+	0x12, 0x43, 0x0a, 0x06, 0x75, 0x6e, 0x69, 0x6f, 0x6e, 0x73, 0x18, 0x06, 0x20, 0x03, 0x28, 0x0b,
+	0x32, 0x2b, 0x2e, 0x73, 0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67,
+	0x65, 0x73, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
+	0x65, 0x2e, 0x55, 0x6e, 0x69, 0x6f, 0x6e, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x06, 0x75,
+	0x6e, 0x69, 0x6f, 0x6e, 0x73, 0x12, 0x47, 0x0a, 0x07, 0x73, 0x65, 0x63, 0x72, 0x65, 0x74, 0x73,
+	0x18, 0x07, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2d, 0x2e, 0x73, 0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e,
+	0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x53, 0x65, 0x63, 0x72, 0x65, 0x74, 0x73, 0x43,
+	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x07, 0x73, 0x65, 0x63, 0x72, 0x65, 0x74, 0x73, 0x12, 0x58,
+	0x0a, 0x0d, 0x73, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x18,
+	0x08, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x32, 0x2e, 0x73, 0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e, 0x6d,
+	0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x53, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74,
+	0x69, 0x6f, 0x6e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x0d, 0x73, 0x75, 0x62, 0x73, 0x63,
+	0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x12, 0x6a, 0x0a, 0x13, 0x73, 0x75, 0x62, 0x73,
+	0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x73, 0x18,
+	0x09, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x38, 0x2e, 0x73, 0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e, 0x6d,
+	0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x53, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74,
+	0x69, 0x6f, 0x6e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52,
+	0x13, 0x73, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x43, 0x6f, 0x6e,
+	0x66, 0x69, 0x67, 0x73, 0x12, 0x2c, 0x0a, 0x05, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x18, 0x0a, 0x20,
+	0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x73, 0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e, 0x6d, 0x65, 0x73,
+	0x73, 0x61, 0x67, 0x65, 0x73, 0x2e, 0x45, 0x72, 0x72, 0x6f, 0x72, 0x52, 0x05, 0x65, 0x72, 0x72,
+	0x6f, 0x72, 0x1a, 0x43, 0x0a, 0x0b, 0x45, 0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e,
+	0x74, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x72, 0x6f, 0x76, 0x69, 0x64, 0x65, 0x72, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x08, 0x70, 0x72, 0x6f, 0x76, 0x69, 0x64, 0x65, 0x72, 0x12, 0x18, 0x0a,
+	0x07, 0x72, 0x75, 0x6e, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07,
+	0x72, 0x75, 0x6e, 0x74, 0x69, 0x6d, 0x65, 0x1a, 0x9d, 0x01, 0x0a, 0x0f, 0x49, 0x6e, 0x74, 0x65,
+	0x72, 0x66, 0x61, 0x63, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x4d, 0x0a, 0x0b, 0x65,
+	0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x2b, 0x2e, 0x73, 0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67,
+	0x65, 0x73, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
+	0x65, 0x2e, 0x45, 0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x0b, 0x65,
+	0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x12, 0x3b, 0x0a, 0x0b, 0x72, 0x65,
+	0x73, 0x6f, 0x6c, 0x76, 0x65, 0x54, 0x79, 0x70, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x19, 0x2e, 0x73, 0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65,
+	0x73, 0x2e, 0x46, 0x75, 0x6e, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x0b, 0x72, 0x65, 0x73, 0x6f,
+	0x6c, 0x76, 0x65, 0x54, 0x79, 0x70, 0x65, 0x1a, 0x94, 0x01, 0x0a, 0x0e, 0x52, 0x65, 0x73, 0x6f,
+	0x6c, 0x76, 0x65, 0x72, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x4d, 0x0a, 0x0b, 0x65, 0x6e,
+	0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x2b, 0x2e, 0x73, 0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65,
+	0x73, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x2e, 0x45, 0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x0b, 0x65, 0x6e,
+	0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x12, 0x33, 0x0a, 0x07, 0x72, 0x65, 0x73,
+	0x6f, 0x6c, 0x76, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x73, 0x74, 0x75,
+	0x63, 0x63, 0x6f, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x2e, 0x46, 0x75, 0x6e,
+	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x07, 0x72, 0x65, 0x73, 0x6f, 0x6c, 0x76, 0x65, 0x1a, 0xc7,
+	0x01, 0x0a, 0x0c, 0x53, 0x63, 0x61, 0x6c, 0x61, 0x72, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12,
+	0x4d, 0x0a, 0x0b, 0x65, 0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x2b, 0x2e, 0x73, 0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e, 0x6d, 0x65,
+	0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x45, 0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e,
+	0x74, 0x52, 0x0b, 0x65, 0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x12, 0x2f,
+	0x0a, 0x05, 0x70, 0x61, 0x72, 0x73, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x19, 0x2e,
+	0x73, 0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x2e,
+	0x46, 0x75, 0x6e, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x05, 0x70, 0x61, 0x72, 0x73, 0x65, 0x12,
+	0x37, 0x0a, 0x09, 0x73, 0x65, 0x72, 0x69, 0x61, 0x6c, 0x69, 0x7a, 0x65, 0x18, 0x03, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x19, 0x2e, 0x73, 0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e, 0x6d, 0x65, 0x73, 0x73,
+	0x61, 0x67, 0x65, 0x73, 0x2e, 0x46, 0x75, 0x6e, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x09, 0x73,
+	0x65, 0x72, 0x69, 0x61, 0x6c, 0x69, 0x7a, 0x65, 0x1a, 0x99, 0x01, 0x0a, 0x0b, 0x55, 0x6e, 0x69,
+	0x6f, 0x6e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x4d, 0x0a, 0x0b, 0x65, 0x6e, 0x76, 0x69,
+	0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2b, 0x2e,
+	0x73, 0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x2e,
+	0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x45,
+	0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x0b, 0x65, 0x6e, 0x76, 0x69,
+	0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x12, 0x3b, 0x0a, 0x0b, 0x72, 0x65, 0x73, 0x6f, 0x6c,
+	0x76, 0x65, 0x54, 0x79, 0x70, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x73,
+	0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x2e, 0x46,
+	0x75, 0x6e, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x0b, 0x72, 0x65, 0x73, 0x6f, 0x6c, 0x76, 0x65,
+	0x54, 0x79, 0x70, 0x65, 0x1a, 0xa1, 0x01, 0x0a, 0x0d, 0x53, 0x65, 0x63, 0x72, 0x65, 0x74, 0x73,
+	0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x54, 0x0a, 0x07, 0x73, 0x65, 0x63, 0x72, 0x65, 0x74,
+	0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x3a, 0x2e, 0x73, 0x74, 0x75, 0x63, 0x63, 0x6f,
+	0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x53, 0x65, 0x63, 0x72, 0x65, 0x74, 0x73,
+	0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x2e, 0x53, 0x65, 0x63, 0x72, 0x65, 0x74, 0x73, 0x45, 0x6e,
+	0x74, 0x72, 0x79, 0x52, 0x07, 0x73, 0x65, 0x63, 0x72, 0x65, 0x74, 0x73, 0x1a, 0x3a, 0x0a, 0x0c,
+	0x53, 0x65, 0x63, 0x72, 0x65, 0x74, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03,
+	0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14,
+	0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76,
+	0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x1a, 0xf4, 0x02, 0x0a, 0x12, 0x53, 0x75, 0x62,
+	0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12,
+	0x4d, 0x0a, 0x0b, 0x65, 0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x2b, 0x2e, 0x73, 0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e, 0x6d, 0x65,
+	0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x45, 0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e,
+	0x74, 0x52, 0x0b, 0x65, 0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x12, 0x57,
+	0x0a, 0x04, 0x6b, 0x69, 0x6e, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x43, 0x2e, 0x73,
+	0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x2e, 0x43,
+	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x53, 0x75,
+	0x62, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67,
+	0x2e, 0x53, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x4b, 0x69, 0x6e,
+	0x64, 0x52, 0x04, 0x6b, 0x69, 0x6e, 0x64, 0x12, 0x45, 0x0a, 0x10, 0x63, 0x72, 0x65, 0x61, 0x74,
+	0x65, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x19, 0x2e, 0x73, 0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61,
+	0x67, 0x65, 0x73, 0x2e, 0x46, 0x75, 0x6e, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x10, 0x63, 0x72,
+	0x65, 0x61, 0x74, 0x65, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x31,
+	0x0a, 0x06, 0x6c, 0x69, 0x73, 0x74, 0x65, 0x6e, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x19,
+	0x2e, 0x73, 0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73,
+	0x2e, 0x46, 0x75, 0x6e, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x06, 0x6c, 0x69, 0x73, 0x74, 0x65,
+	0x6e, 0x22, 0x3c, 0x0a, 0x10, 0x53, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f,
+	0x6e, 0x4b, 0x69, 0x6e, 0x64, 0x12, 0x0c, 0x0a, 0x08, 0x42, 0x4c, 0x4f, 0x43, 0x4b, 0x49, 0x4e,
+	0x47, 0x10, 0x00, 0x12, 0x0c, 0x0a, 0x08, 0x45, 0x58, 0x54, 0x45, 0x52, 0x4e, 0x41, 0x4c, 0x10,
+	0x01, 0x12, 0x0c, 0x0a, 0x08, 0x52, 0x45, 0x44, 0x49, 0x52, 0x45, 0x43, 0x54, 0x10, 0x02, 0x1a,
+	0x6e, 0x0a, 0x0f, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x73, 0x45, 0x6e, 0x74,
+	0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x03, 0x6b, 0x65, 0x79, 0x12, 0x45, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x0b, 0x32, 0x2f, 0x2e, 0x73, 0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e, 0x6d, 0x65, 0x73,
+	0x73, 0x61, 0x67, 0x65, 0x73, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x43, 0x6f,
+	0x6e, 0x66, 0x69, 0x67, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x1a,
+	0x6c, 0x0a, 0x0e, 0x52, 0x65, 0x73, 0x6f, 0x6c, 0x76, 0x65, 0x72, 0x73, 0x45, 0x6e, 0x74, 0x72,
+	0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03,
+	0x6b, 0x65, 0x79, 0x12, 0x44, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x2e, 0x2e, 0x73, 0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e, 0x6d, 0x65, 0x73, 0x73,
+	0x61, 0x67, 0x65, 0x73, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x2e, 0x52, 0x65, 0x73, 0x6f, 0x6c, 0x76, 0x65, 0x72, 0x43, 0x6f, 0x6e, 0x66,
+	0x69, 0x67, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x1a, 0x68, 0x0a,
+	0x0c, 0x53, 0x63, 0x61, 0x6c, 0x61, 0x72, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a,
+	0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12,
+	0x42, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2c,
+	0x2e, 0x73, 0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73,
+	0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e,
+	0x53, 0x63, 0x61, 0x6c, 0x61, 0x72, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x05, 0x76, 0x61,
+	0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x1a, 0x66, 0x0a, 0x0b, 0x55, 0x6e, 0x69, 0x6f, 0x6e,
+	0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x41, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75,
+	0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2b, 0x2e, 0x73, 0x74, 0x75, 0x63, 0x63, 0x6f,
+	0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x55, 0x6e, 0x69, 0x6f, 0x6e, 0x43, 0x6f,
+	0x6e, 0x66, 0x69, 0x67, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x1a,
+	0x7a, 0x0a, 0x18, 0x53, 0x75, 0x62, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x43,
+	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b,
+	0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x48, 0x0a,
+	0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x32, 0x2e, 0x73,
+	0x74, 0x75, 0x63, 0x63, 0x6f, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x2e, 0x43,
+	0x6f, 0x6e, 0x66, 0x69, 0x67, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x53, 0x75,
+	0x62, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67,
+	0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x42, 0x34, 0x5a, 0x32, 0x67,
+	0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x67, 0x72, 0x61, 0x70, 0x68, 0x71,
+	0x6c, 0x2d, 0x65, 0x64, 0x69, 0x74, 0x6f, 0x72, 0x2f, 0x73, 0x74, 0x75, 0x63, 0x63, 0x6f, 0x5f,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x2f, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65,
+	0x73, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -3056,166 +3825,211 @@ func file_messages_messages_proto_rawDescGZIP() []byte {
 	return file_messages_messages_proto_rawDescData
 }
 
-var file_messages_messages_proto_msgTypes = make([]protoimpl.MessageInfo, 51)
+var file_messages_messages_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_messages_messages_proto_msgTypes = make([]protoimpl.MessageInfo, 66)
 var file_messages_messages_proto_goTypes = []interface{}{
-	(*ObjectValue)(nil),                    // 0: stucco.messages.ObjectValue
-	(*ArrayValue)(nil),                     // 1: stucco.messages.ArrayValue
-	(*Value)(nil),                          // 2: stucco.messages.Value
-	(*Error)(nil),                          // 3: stucco.messages.Error
-	(*Function)(nil),                       // 4: stucco.messages.Function
-	(*TypeRef)(nil),                        // 5: stucco.messages.TypeRef
-	(*ResponsePath)(nil),                   // 6: stucco.messages.ResponsePath
-	(*Variable)(nil),                       // 7: stucco.messages.Variable
-	(*VariableDefinition)(nil),             // 8: stucco.messages.VariableDefinition
-	(*Directive)(nil),                      // 9: stucco.messages.Directive
-	(*FragmentDefinition)(nil),             // 10: stucco.messages.FragmentDefinition
-	(*Selection)(nil),                      // 11: stucco.messages.Selection
-	(*OperationDefinition)(nil),            // 12: stucco.messages.OperationDefinition
-	(*FieldResolveInfo)(nil),               // 13: stucco.messages.FieldResolveInfo
-	(*FieldResolveRequest)(nil),            // 14: stucco.messages.FieldResolveRequest
-	(*FieldResolveResponse)(nil),           // 15: stucco.messages.FieldResolveResponse
-	(*InterfaceResolveTypeInfo)(nil),       // 16: stucco.messages.InterfaceResolveTypeInfo
-	(*InterfaceResolveTypeRequest)(nil),    // 17: stucco.messages.InterfaceResolveTypeRequest
-	(*InterfaceResolveTypeResponse)(nil),   // 18: stucco.messages.InterfaceResolveTypeResponse
-	(*ScalarParseRequest)(nil),             // 19: stucco.messages.ScalarParseRequest
-	(*ScalarParseResponse)(nil),            // 20: stucco.messages.ScalarParseResponse
-	(*ScalarSerializeRequest)(nil),         // 21: stucco.messages.ScalarSerializeRequest
-	(*ScalarSerializeResponse)(nil),        // 22: stucco.messages.ScalarSerializeResponse
-	(*UnionResolveTypeInfo)(nil),           // 23: stucco.messages.UnionResolveTypeInfo
-	(*UnionResolveTypeRequest)(nil),        // 24: stucco.messages.UnionResolveTypeRequest
-	(*UnionResolveTypeResponse)(nil),       // 25: stucco.messages.UnionResolveTypeResponse
-	(*Secret)(nil),                         // 26: stucco.messages.Secret
-	(*SetSecretsRequest)(nil),              // 27: stucco.messages.SetSecretsRequest
-	(*SetSecretsResponse)(nil),             // 28: stucco.messages.SetSecretsResponse
-	(*StreamInfo)(nil),                     // 29: stucco.messages.StreamInfo
-	(*StreamRequest)(nil),                  // 30: stucco.messages.StreamRequest
-	(*StreamMessage)(nil),                  // 31: stucco.messages.StreamMessage
-	(*ByteStreamRequest)(nil),              // 32: stucco.messages.ByteStreamRequest
-	(*ByteStream)(nil),                     // 33: stucco.messages.ByteStream
-	(*SubscriptionConnectionRequest)(nil),  // 34: stucco.messages.SubscriptionConnectionRequest
-	(*SubscriptionConnectionResponse)(nil), // 35: stucco.messages.SubscriptionConnectionResponse
-	(*SubscriptionListenRequest)(nil),      // 36: stucco.messages.SubscriptionListenRequest
-	(*SubscriptionListenMessage)(nil),      // 37: stucco.messages.SubscriptionListenMessage
-	nil,                                    // 38: stucco.messages.ObjectValue.PropsEntry
-	nil,                                    // 39: stucco.messages.Directive.ArgumentsEntry
-	nil,                                    // 40: stucco.messages.Selection.ArgumentsEntry
-	nil,                                    // 41: stucco.messages.FieldResolveInfo.VariableValuesEntry
-	nil,                                    // 42: stucco.messages.FieldResolveRequest.ArgumentsEntry
-	nil,                                    // 43: stucco.messages.FieldResolveRequest.SecretsEntry
-	nil,                                    // 44: stucco.messages.InterfaceResolveTypeInfo.VariableValuesEntry
-	nil,                                    // 45: stucco.messages.UnionResolveTypeInfo.VariableValuesEntry
-	nil,                                    // 46: stucco.messages.StreamInfo.VariableValuesEntry
-	nil,                                    // 47: stucco.messages.StreamRequest.ArgumentsEntry
-	nil,                                    // 48: stucco.messages.StreamRequest.SecretsEntry
-	nil,                                    // 49: stucco.messages.SubscriptionConnectionRequest.VariableValuesEntry
-	nil,                                    // 50: stucco.messages.SubscriptionListenRequest.VariableValuesEntry
+	(ConfigResponse_SubscriptionConfig_SubscriptionKind)(0), // 0: stucco.messages.ConfigResponse.SubscriptionConfig.SubscriptionKind
+	(*ObjectValue)(nil),                    // 1: stucco.messages.ObjectValue
+	(*ArrayValue)(nil),                     // 2: stucco.messages.ArrayValue
+	(*Value)(nil),                          // 3: stucco.messages.Value
+	(*Error)(nil),                          // 4: stucco.messages.Error
+	(*Function)(nil),                       // 5: stucco.messages.Function
+	(*TypeRef)(nil),                        // 6: stucco.messages.TypeRef
+	(*ResponsePath)(nil),                   // 7: stucco.messages.ResponsePath
+	(*Variable)(nil),                       // 8: stucco.messages.Variable
+	(*VariableDefinition)(nil),             // 9: stucco.messages.VariableDefinition
+	(*Directive)(nil),                      // 10: stucco.messages.Directive
+	(*FragmentDefinition)(nil),             // 11: stucco.messages.FragmentDefinition
+	(*Selection)(nil),                      // 12: stucco.messages.Selection
+	(*OperationDefinition)(nil),            // 13: stucco.messages.OperationDefinition
+	(*FieldResolveInfo)(nil),               // 14: stucco.messages.FieldResolveInfo
+	(*FieldResolveRequest)(nil),            // 15: stucco.messages.FieldResolveRequest
+	(*FieldResolveResponse)(nil),           // 16: stucco.messages.FieldResolveResponse
+	(*InterfaceResolveTypeInfo)(nil),       // 17: stucco.messages.InterfaceResolveTypeInfo
+	(*InterfaceResolveTypeRequest)(nil),    // 18: stucco.messages.InterfaceResolveTypeRequest
+	(*InterfaceResolveTypeResponse)(nil),   // 19: stucco.messages.InterfaceResolveTypeResponse
+	(*ScalarParseRequest)(nil),             // 20: stucco.messages.ScalarParseRequest
+	(*ScalarParseResponse)(nil),            // 21: stucco.messages.ScalarParseResponse
+	(*ScalarSerializeRequest)(nil),         // 22: stucco.messages.ScalarSerializeRequest
+	(*ScalarSerializeResponse)(nil),        // 23: stucco.messages.ScalarSerializeResponse
+	(*UnionResolveTypeInfo)(nil),           // 24: stucco.messages.UnionResolveTypeInfo
+	(*UnionResolveTypeRequest)(nil),        // 25: stucco.messages.UnionResolveTypeRequest
+	(*UnionResolveTypeResponse)(nil),       // 26: stucco.messages.UnionResolveTypeResponse
+	(*Secret)(nil),                         // 27: stucco.messages.Secret
+	(*SetSecretsRequest)(nil),              // 28: stucco.messages.SetSecretsRequest
+	(*SetSecretsResponse)(nil),             // 29: stucco.messages.SetSecretsResponse
+	(*StreamInfo)(nil),                     // 30: stucco.messages.StreamInfo
+	(*StreamRequest)(nil),                  // 31: stucco.messages.StreamRequest
+	(*StreamMessage)(nil),                  // 32: stucco.messages.StreamMessage
+	(*ByteStreamRequest)(nil),              // 33: stucco.messages.ByteStreamRequest
+	(*ByteStream)(nil),                     // 34: stucco.messages.ByteStream
+	(*SubscriptionConnectionRequest)(nil),  // 35: stucco.messages.SubscriptionConnectionRequest
+	(*SubscriptionConnectionResponse)(nil), // 36: stucco.messages.SubscriptionConnectionResponse
+	(*SubscriptionListenRequest)(nil),      // 37: stucco.messages.SubscriptionListenRequest
+	(*SubscriptionListenMessage)(nil),      // 38: stucco.messages.SubscriptionListenMessage
+	(*ConfigRequest)(nil),                  // 39: stucco.messages.ConfigRequest
+	(*ConfigResponse)(nil),                 // 40: stucco.messages.ConfigResponse
+	nil,                                    // 41: stucco.messages.ObjectValue.PropsEntry
+	nil,                                    // 42: stucco.messages.Directive.ArgumentsEntry
+	nil,                                    // 43: stucco.messages.Selection.ArgumentsEntry
+	nil,                                    // 44: stucco.messages.FieldResolveInfo.VariableValuesEntry
+	nil,                                    // 45: stucco.messages.FieldResolveRequest.ArgumentsEntry
+	nil,                                    // 46: stucco.messages.FieldResolveRequest.SecretsEntry
+	nil,                                    // 47: stucco.messages.InterfaceResolveTypeInfo.VariableValuesEntry
+	nil,                                    // 48: stucco.messages.UnionResolveTypeInfo.VariableValuesEntry
+	nil,                                    // 49: stucco.messages.StreamInfo.VariableValuesEntry
+	nil,                                    // 50: stucco.messages.StreamRequest.ArgumentsEntry
+	nil,                                    // 51: stucco.messages.StreamRequest.SecretsEntry
+	nil,                                    // 52: stucco.messages.SubscriptionConnectionRequest.VariableValuesEntry
+	nil,                                    // 53: stucco.messages.SubscriptionListenRequest.VariableValuesEntry
+	(*ConfigResponse_Environment)(nil),     // 54: stucco.messages.ConfigResponse.Environment
+	(*ConfigResponse_InterfaceConfig)(nil), // 55: stucco.messages.ConfigResponse.InterfaceConfig
+	(*ConfigResponse_ResolverConfig)(nil),  // 56: stucco.messages.ConfigResponse.ResolverConfig
+	(*ConfigResponse_ScalarConfig)(nil),    // 57: stucco.messages.ConfigResponse.ScalarConfig
+	(*ConfigResponse_UnionConfig)(nil),     // 58: stucco.messages.ConfigResponse.UnionConfig
+	(*ConfigResponse_SecretsConfig)(nil),   // 59: stucco.messages.ConfigResponse.SecretsConfig
+	(*ConfigResponse_SubscriptionConfig)(nil), // 60: stucco.messages.ConfigResponse.SubscriptionConfig
+	nil, // 61: stucco.messages.ConfigResponse.InterfacesEntry
+	nil, // 62: stucco.messages.ConfigResponse.ResolversEntry
+	nil, // 63: stucco.messages.ConfigResponse.ScalarsEntry
+	nil, // 64: stucco.messages.ConfigResponse.UnionsEntry
+	nil, // 65: stucco.messages.ConfigResponse.SubscriptionConfigsEntry
+	nil, // 66: stucco.messages.ConfigResponse.SecretsConfig.SecretsEntry
 }
 var file_messages_messages_proto_depIdxs = []int32{
-	38,  // 0: stucco.messages.ObjectValue.props:type_name -> stucco.messages.ObjectValue.PropsEntry
-	2,   // 1: stucco.messages.ArrayValue.items:type_name -> stucco.messages.Value
-	0,   // 2: stucco.messages.Value.o:type_name -> stucco.messages.ObjectValue
-	1,   // 3: stucco.messages.Value.a:type_name -> stucco.messages.ArrayValue
-	5,   // 4: stucco.messages.TypeRef.nonNull:type_name -> stucco.messages.TypeRef
-	5,   // 5: stucco.messages.TypeRef.list:type_name -> stucco.messages.TypeRef
-	2,   // 6: stucco.messages.ResponsePath.key:type_name -> stucco.messages.Value
-	6,   // 7: stucco.messages.ResponsePath.prev:type_name -> stucco.messages.ResponsePath
-	7,   // 8: stucco.messages.VariableDefinition.variable:type_name -> stucco.messages.Variable
-	2,   // 9: stucco.messages.VariableDefinition.defaultValue:type_name -> stucco.messages.Value
-	39,  // 10: stucco.messages.Directive.arguments:type_name -> stucco.messages.Directive.ArgumentsEntry
-	9,   // 11: stucco.messages.FragmentDefinition.directives:type_name -> stucco.messages.Directive
-	5,   // 12: stucco.messages.FragmentDefinition.typeCondition:type_name -> stucco.messages.TypeRef
-	11,  // 13: stucco.messages.FragmentDefinition.selectionSet:type_name -> stucco.messages.Selection
-	8,   // 14: stucco.messages.FragmentDefinition.variableDefinitions:type_name -> stucco.messages.VariableDefinition
-	40,  // 15: stucco.messages.Selection.arguments:type_name -> stucco.messages.Selection.ArgumentsEntry
-	9,   // 16: stucco.messages.Selection.directives:type_name -> stucco.messages.Directive
-	11,  // 17: stucco.messages.Selection.selectionSet:type_name -> stucco.messages.Selection
-	10,  // 18: stucco.messages.Selection.definition:type_name -> stucco.messages.FragmentDefinition
-	8,   // 19: stucco.messages.OperationDefinition.variableDefinitions:type_name -> stucco.messages.VariableDefinition
-	9,   // 20: stucco.messages.OperationDefinition.directives:type_name -> stucco.messages.Directive
-	11,  // 21: stucco.messages.OperationDefinition.selectionSet:type_name -> stucco.messages.Selection
-	6,   // 22: stucco.messages.FieldResolveInfo.path:type_name -> stucco.messages.ResponsePath
-	5,   // 23: stucco.messages.FieldResolveInfo.returnType:type_name -> stucco.messages.TypeRef
-	5,   // 24: stucco.messages.FieldResolveInfo.parentType:type_name -> stucco.messages.TypeRef
-	12,  // 25: stucco.messages.FieldResolveInfo.operation:type_name -> stucco.messages.OperationDefinition
-	41,  // 26: stucco.messages.FieldResolveInfo.variableValues:type_name -> stucco.messages.FieldResolveInfo.VariableValuesEntry
-	2,   // 27: stucco.messages.FieldResolveInfo.rootValue:type_name -> stucco.messages.Value
-	4,   // 28: stucco.messages.FieldResolveRequest.function:type_name -> stucco.messages.Function
-	2,   // 29: stucco.messages.FieldResolveRequest.source:type_name -> stucco.messages.Value
-	42,  // 30: stucco.messages.FieldResolveRequest.arguments:type_name -> stucco.messages.FieldResolveRequest.ArgumentsEntry
-	13,  // 31: stucco.messages.FieldResolveRequest.info:type_name -> stucco.messages.FieldResolveInfo
-	43,  // 32: stucco.messages.FieldResolveRequest.secrets:type_name -> stucco.messages.FieldResolveRequest.SecretsEntry
-	2,   // 33: stucco.messages.FieldResolveRequest.protocol:type_name -> stucco.messages.Value
-	2,   // 34: stucco.messages.FieldResolveRequest.subscriptionPayload:type_name -> stucco.messages.Value
-	2,   // 35: stucco.messages.FieldResolveResponse.response:type_name -> stucco.messages.Value
-	3,   // 36: stucco.messages.FieldResolveResponse.error:type_name -> stucco.messages.Error
-	6,   // 37: stucco.messages.InterfaceResolveTypeInfo.path:type_name -> stucco.messages.ResponsePath
-	5,   // 38: stucco.messages.InterfaceResolveTypeInfo.returnType:type_name -> stucco.messages.TypeRef
-	5,   // 39: stucco.messages.InterfaceResolveTypeInfo.parentType:type_name -> stucco.messages.TypeRef
-	12,  // 40: stucco.messages.InterfaceResolveTypeInfo.operation:type_name -> stucco.messages.OperationDefinition
-	44,  // 41: stucco.messages.InterfaceResolveTypeInfo.variableValues:type_name -> stucco.messages.InterfaceResolveTypeInfo.VariableValuesEntry
-	4,   // 42: stucco.messages.InterfaceResolveTypeRequest.function:type_name -> stucco.messages.Function
-	2,   // 43: stucco.messages.InterfaceResolveTypeRequest.value:type_name -> stucco.messages.Value
-	16,  // 44: stucco.messages.InterfaceResolveTypeRequest.info:type_name -> stucco.messages.InterfaceResolveTypeInfo
-	5,   // 45: stucco.messages.InterfaceResolveTypeResponse.type:type_name -> stucco.messages.TypeRef
-	3,   // 46: stucco.messages.InterfaceResolveTypeResponse.error:type_name -> stucco.messages.Error
-	2,   // 47: stucco.messages.ScalarParseRequest.value:type_name -> stucco.messages.Value
-	4,   // 48: stucco.messages.ScalarParseRequest.function:type_name -> stucco.messages.Function
-	2,   // 49: stucco.messages.ScalarParseResponse.value:type_name -> stucco.messages.Value
-	3,   // 50: stucco.messages.ScalarParseResponse.error:type_name -> stucco.messages.Error
-	2,   // 51: stucco.messages.ScalarSerializeRequest.value:type_name -> stucco.messages.Value
-	4,   // 52: stucco.messages.ScalarSerializeRequest.function:type_name -> stucco.messages.Function
-	2,   // 53: stucco.messages.ScalarSerializeResponse.value:type_name -> stucco.messages.Value
-	3,   // 54: stucco.messages.ScalarSerializeResponse.error:type_name -> stucco.messages.Error
-	6,   // 55: stucco.messages.UnionResolveTypeInfo.path:type_name -> stucco.messages.ResponsePath
-	5,   // 56: stucco.messages.UnionResolveTypeInfo.returnType:type_name -> stucco.messages.TypeRef
-	5,   // 57: stucco.messages.UnionResolveTypeInfo.parentType:type_name -> stucco.messages.TypeRef
-	12,  // 58: stucco.messages.UnionResolveTypeInfo.operation:type_name -> stucco.messages.OperationDefinition
-	45,  // 59: stucco.messages.UnionResolveTypeInfo.variableValues:type_name -> stucco.messages.UnionResolveTypeInfo.VariableValuesEntry
-	4,   // 60: stucco.messages.UnionResolveTypeRequest.function:type_name -> stucco.messages.Function
-	2,   // 61: stucco.messages.UnionResolveTypeRequest.value:type_name -> stucco.messages.Value
-	23,  // 62: stucco.messages.UnionResolveTypeRequest.info:type_name -> stucco.messages.UnionResolveTypeInfo
-	5,   // 63: stucco.messages.UnionResolveTypeResponse.type:type_name -> stucco.messages.TypeRef
-	3,   // 64: stucco.messages.UnionResolveTypeResponse.error:type_name -> stucco.messages.Error
-	26,  // 65: stucco.messages.SetSecretsRequest.secrets:type_name -> stucco.messages.Secret
-	3,   // 66: stucco.messages.SetSecretsResponse.error:type_name -> stucco.messages.Error
-	6,   // 67: stucco.messages.StreamInfo.path:type_name -> stucco.messages.ResponsePath
-	5,   // 68: stucco.messages.StreamInfo.returnType:type_name -> stucco.messages.TypeRef
-	5,   // 69: stucco.messages.StreamInfo.parentType:type_name -> stucco.messages.TypeRef
-	12,  // 70: stucco.messages.StreamInfo.operation:type_name -> stucco.messages.OperationDefinition
-	46,  // 71: stucco.messages.StreamInfo.variableValues:type_name -> stucco.messages.StreamInfo.VariableValuesEntry
-	4,   // 72: stucco.messages.StreamRequest.function:type_name -> stucco.messages.Function
-	47,  // 73: stucco.messages.StreamRequest.arguments:type_name -> stucco.messages.StreamRequest.ArgumentsEntry
-	29,  // 74: stucco.messages.StreamRequest.info:type_name -> stucco.messages.StreamInfo
-	48,  // 75: stucco.messages.StreamRequest.secrets:type_name -> stucco.messages.StreamRequest.SecretsEntry
-	2,   // 76: stucco.messages.StreamRequest.protocol:type_name -> stucco.messages.Value
-	2,   // 77: stucco.messages.StreamMessage.response:type_name -> stucco.messages.Value
-	3,   // 78: stucco.messages.StreamMessage.error:type_name -> stucco.messages.Error
-	4,   // 79: stucco.messages.SubscriptionConnectionRequest.function:type_name -> stucco.messages.Function
-	49,  // 80: stucco.messages.SubscriptionConnectionRequest.variableValues:type_name -> stucco.messages.SubscriptionConnectionRequest.VariableValuesEntry
-	2,   // 81: stucco.messages.SubscriptionConnectionRequest.protocol:type_name -> stucco.messages.Value
-	2,   // 82: stucco.messages.SubscriptionConnectionResponse.response:type_name -> stucco.messages.Value
-	3,   // 83: stucco.messages.SubscriptionConnectionResponse.error:type_name -> stucco.messages.Error
-	4,   // 84: stucco.messages.SubscriptionListenRequest.function:type_name -> stucco.messages.Function
-	50,  // 85: stucco.messages.SubscriptionListenRequest.variableValues:type_name -> stucco.messages.SubscriptionListenRequest.VariableValuesEntry
-	2,   // 86: stucco.messages.SubscriptionListenRequest.protocol:type_name -> stucco.messages.Value
-	12,  // 87: stucco.messages.SubscriptionListenRequest.operation:type_name -> stucco.messages.OperationDefinition
-	2,   // 88: stucco.messages.SubscriptionListenMessage.payload:type_name -> stucco.messages.Value
-	2,   // 89: stucco.messages.ObjectValue.PropsEntry.value:type_name -> stucco.messages.Value
-	2,   // 90: stucco.messages.Directive.ArgumentsEntry.value:type_name -> stucco.messages.Value
-	2,   // 91: stucco.messages.Selection.ArgumentsEntry.value:type_name -> stucco.messages.Value
-	2,   // 92: stucco.messages.FieldResolveInfo.VariableValuesEntry.value:type_name -> stucco.messages.Value
-	2,   // 93: stucco.messages.FieldResolveRequest.ArgumentsEntry.value:type_name -> stucco.messages.Value
-	2,   // 94: stucco.messages.InterfaceResolveTypeInfo.VariableValuesEntry.value:type_name -> stucco.messages.Value
-	2,   // 95: stucco.messages.UnionResolveTypeInfo.VariableValuesEntry.value:type_name -> stucco.messages.Value
-	2,   // 96: stucco.messages.StreamInfo.VariableValuesEntry.value:type_name -> stucco.messages.Value
-	2,   // 97: stucco.messages.StreamRequest.ArgumentsEntry.value:type_name -> stucco.messages.Value
-	2,   // 98: stucco.messages.SubscriptionConnectionRequest.VariableValuesEntry.value:type_name -> stucco.messages.Value
-	2,   // 99: stucco.messages.SubscriptionListenRequest.VariableValuesEntry.value:type_name -> stucco.messages.Value
-	100, // [100:100] is the sub-list for method output_type
-	100, // [100:100] is the sub-list for method input_type
-	100, // [100:100] is the sub-list for extension type_name
-	100, // [100:100] is the sub-list for extension extendee
-	0,   // [0:100] is the sub-list for field type_name
+	41,  // 0: stucco.messages.ObjectValue.props:type_name -> stucco.messages.ObjectValue.PropsEntry
+	3,   // 1: stucco.messages.ArrayValue.items:type_name -> stucco.messages.Value
+	1,   // 2: stucco.messages.Value.o:type_name -> stucco.messages.ObjectValue
+	2,   // 3: stucco.messages.Value.a:type_name -> stucco.messages.ArrayValue
+	6,   // 4: stucco.messages.TypeRef.nonNull:type_name -> stucco.messages.TypeRef
+	6,   // 5: stucco.messages.TypeRef.list:type_name -> stucco.messages.TypeRef
+	3,   // 6: stucco.messages.ResponsePath.key:type_name -> stucco.messages.Value
+	7,   // 7: stucco.messages.ResponsePath.prev:type_name -> stucco.messages.ResponsePath
+	8,   // 8: stucco.messages.VariableDefinition.variable:type_name -> stucco.messages.Variable
+	3,   // 9: stucco.messages.VariableDefinition.defaultValue:type_name -> stucco.messages.Value
+	42,  // 10: stucco.messages.Directive.arguments:type_name -> stucco.messages.Directive.ArgumentsEntry
+	10,  // 11: stucco.messages.FragmentDefinition.directives:type_name -> stucco.messages.Directive
+	6,   // 12: stucco.messages.FragmentDefinition.typeCondition:type_name -> stucco.messages.TypeRef
+	12,  // 13: stucco.messages.FragmentDefinition.selectionSet:type_name -> stucco.messages.Selection
+	9,   // 14: stucco.messages.FragmentDefinition.variableDefinitions:type_name -> stucco.messages.VariableDefinition
+	43,  // 15: stucco.messages.Selection.arguments:type_name -> stucco.messages.Selection.ArgumentsEntry
+	10,  // 16: stucco.messages.Selection.directives:type_name -> stucco.messages.Directive
+	12,  // 17: stucco.messages.Selection.selectionSet:type_name -> stucco.messages.Selection
+	11,  // 18: stucco.messages.Selection.definition:type_name -> stucco.messages.FragmentDefinition
+	9,   // 19: stucco.messages.OperationDefinition.variableDefinitions:type_name -> stucco.messages.VariableDefinition
+	10,  // 20: stucco.messages.OperationDefinition.directives:type_name -> stucco.messages.Directive
+	12,  // 21: stucco.messages.OperationDefinition.selectionSet:type_name -> stucco.messages.Selection
+	7,   // 22: stucco.messages.FieldResolveInfo.path:type_name -> stucco.messages.ResponsePath
+	6,   // 23: stucco.messages.FieldResolveInfo.returnType:type_name -> stucco.messages.TypeRef
+	6,   // 24: stucco.messages.FieldResolveInfo.parentType:type_name -> stucco.messages.TypeRef
+	13,  // 25: stucco.messages.FieldResolveInfo.operation:type_name -> stucco.messages.OperationDefinition
+	44,  // 26: stucco.messages.FieldResolveInfo.variableValues:type_name -> stucco.messages.FieldResolveInfo.VariableValuesEntry
+	3,   // 27: stucco.messages.FieldResolveInfo.rootValue:type_name -> stucco.messages.Value
+	5,   // 28: stucco.messages.FieldResolveRequest.function:type_name -> stucco.messages.Function
+	3,   // 29: stucco.messages.FieldResolveRequest.source:type_name -> stucco.messages.Value
+	45,  // 30: stucco.messages.FieldResolveRequest.arguments:type_name -> stucco.messages.FieldResolveRequest.ArgumentsEntry
+	14,  // 31: stucco.messages.FieldResolveRequest.info:type_name -> stucco.messages.FieldResolveInfo
+	46,  // 32: stucco.messages.FieldResolveRequest.secrets:type_name -> stucco.messages.FieldResolveRequest.SecretsEntry
+	3,   // 33: stucco.messages.FieldResolveRequest.protocol:type_name -> stucco.messages.Value
+	3,   // 34: stucco.messages.FieldResolveRequest.subscriptionPayload:type_name -> stucco.messages.Value
+	3,   // 35: stucco.messages.FieldResolveResponse.response:type_name -> stucco.messages.Value
+	4,   // 36: stucco.messages.FieldResolveResponse.error:type_name -> stucco.messages.Error
+	7,   // 37: stucco.messages.InterfaceResolveTypeInfo.path:type_name -> stucco.messages.ResponsePath
+	6,   // 38: stucco.messages.InterfaceResolveTypeInfo.returnType:type_name -> stucco.messages.TypeRef
+	6,   // 39: stucco.messages.InterfaceResolveTypeInfo.parentType:type_name -> stucco.messages.TypeRef
+	13,  // 40: stucco.messages.InterfaceResolveTypeInfo.operation:type_name -> stucco.messages.OperationDefinition
+	47,  // 41: stucco.messages.InterfaceResolveTypeInfo.variableValues:type_name -> stucco.messages.InterfaceResolveTypeInfo.VariableValuesEntry
+	5,   // 42: stucco.messages.InterfaceResolveTypeRequest.function:type_name -> stucco.messages.Function
+	3,   // 43: stucco.messages.InterfaceResolveTypeRequest.value:type_name -> stucco.messages.Value
+	17,  // 44: stucco.messages.InterfaceResolveTypeRequest.info:type_name -> stucco.messages.InterfaceResolveTypeInfo
+	6,   // 45: stucco.messages.InterfaceResolveTypeResponse.type:type_name -> stucco.messages.TypeRef
+	4,   // 46: stucco.messages.InterfaceResolveTypeResponse.error:type_name -> stucco.messages.Error
+	3,   // 47: stucco.messages.ScalarParseRequest.value:type_name -> stucco.messages.Value
+	5,   // 48: stucco.messages.ScalarParseRequest.function:type_name -> stucco.messages.Function
+	3,   // 49: stucco.messages.ScalarParseResponse.value:type_name -> stucco.messages.Value
+	4,   // 50: stucco.messages.ScalarParseResponse.error:type_name -> stucco.messages.Error
+	3,   // 51: stucco.messages.ScalarSerializeRequest.value:type_name -> stucco.messages.Value
+	5,   // 52: stucco.messages.ScalarSerializeRequest.function:type_name -> stucco.messages.Function
+	3,   // 53: stucco.messages.ScalarSerializeResponse.value:type_name -> stucco.messages.Value
+	4,   // 54: stucco.messages.ScalarSerializeResponse.error:type_name -> stucco.messages.Error
+	7,   // 55: stucco.messages.UnionResolveTypeInfo.path:type_name -> stucco.messages.ResponsePath
+	6,   // 56: stucco.messages.UnionResolveTypeInfo.returnType:type_name -> stucco.messages.TypeRef
+	6,   // 57: stucco.messages.UnionResolveTypeInfo.parentType:type_name -> stucco.messages.TypeRef
+	13,  // 58: stucco.messages.UnionResolveTypeInfo.operation:type_name -> stucco.messages.OperationDefinition
+	48,  // 59: stucco.messages.UnionResolveTypeInfo.variableValues:type_name -> stucco.messages.UnionResolveTypeInfo.VariableValuesEntry
+	5,   // 60: stucco.messages.UnionResolveTypeRequest.function:type_name -> stucco.messages.Function
+	3,   // 61: stucco.messages.UnionResolveTypeRequest.value:type_name -> stucco.messages.Value
+	24,  // 62: stucco.messages.UnionResolveTypeRequest.info:type_name -> stucco.messages.UnionResolveTypeInfo
+	6,   // 63: stucco.messages.UnionResolveTypeResponse.type:type_name -> stucco.messages.TypeRef
+	4,   // 64: stucco.messages.UnionResolveTypeResponse.error:type_name -> stucco.messages.Error
+	27,  // 65: stucco.messages.SetSecretsRequest.secrets:type_name -> stucco.messages.Secret
+	4,   // 66: stucco.messages.SetSecretsResponse.error:type_name -> stucco.messages.Error
+	7,   // 67: stucco.messages.StreamInfo.path:type_name -> stucco.messages.ResponsePath
+	6,   // 68: stucco.messages.StreamInfo.returnType:type_name -> stucco.messages.TypeRef
+	6,   // 69: stucco.messages.StreamInfo.parentType:type_name -> stucco.messages.TypeRef
+	13,  // 70: stucco.messages.StreamInfo.operation:type_name -> stucco.messages.OperationDefinition
+	49,  // 71: stucco.messages.StreamInfo.variableValues:type_name -> stucco.messages.StreamInfo.VariableValuesEntry
+	5,   // 72: stucco.messages.StreamRequest.function:type_name -> stucco.messages.Function
+	50,  // 73: stucco.messages.StreamRequest.arguments:type_name -> stucco.messages.StreamRequest.ArgumentsEntry
+	30,  // 74: stucco.messages.StreamRequest.info:type_name -> stucco.messages.StreamInfo
+	51,  // 75: stucco.messages.StreamRequest.secrets:type_name -> stucco.messages.StreamRequest.SecretsEntry
+	3,   // 76: stucco.messages.StreamRequest.protocol:type_name -> stucco.messages.Value
+	3,   // 77: stucco.messages.StreamMessage.response:type_name -> stucco.messages.Value
+	4,   // 78: stucco.messages.StreamMessage.error:type_name -> stucco.messages.Error
+	5,   // 79: stucco.messages.SubscriptionConnectionRequest.function:type_name -> stucco.messages.Function
+	52,  // 80: stucco.messages.SubscriptionConnectionRequest.variableValues:type_name -> stucco.messages.SubscriptionConnectionRequest.VariableValuesEntry
+	3,   // 81: stucco.messages.SubscriptionConnectionRequest.protocol:type_name -> stucco.messages.Value
+	3,   // 82: stucco.messages.SubscriptionConnectionResponse.response:type_name -> stucco.messages.Value
+	4,   // 83: stucco.messages.SubscriptionConnectionResponse.error:type_name -> stucco.messages.Error
+	5,   // 84: stucco.messages.SubscriptionListenRequest.function:type_name -> stucco.messages.Function
+	53,  // 85: stucco.messages.SubscriptionListenRequest.variableValues:type_name -> stucco.messages.SubscriptionListenRequest.VariableValuesEntry
+	3,   // 86: stucco.messages.SubscriptionListenRequest.protocol:type_name -> stucco.messages.Value
+	13,  // 87: stucco.messages.SubscriptionListenRequest.operation:type_name -> stucco.messages.OperationDefinition
+	3,   // 88: stucco.messages.SubscriptionListenMessage.payload:type_name -> stucco.messages.Value
+	54,  // 89: stucco.messages.ConfigResponse.environment:type_name -> stucco.messages.ConfigResponse.Environment
+	61,  // 90: stucco.messages.ConfigResponse.interfaces:type_name -> stucco.messages.ConfigResponse.InterfacesEntry
+	62,  // 91: stucco.messages.ConfigResponse.resolvers:type_name -> stucco.messages.ConfigResponse.ResolversEntry
+	63,  // 92: stucco.messages.ConfigResponse.scalars:type_name -> stucco.messages.ConfigResponse.ScalarsEntry
+	64,  // 93: stucco.messages.ConfigResponse.unions:type_name -> stucco.messages.ConfigResponse.UnionsEntry
+	59,  // 94: stucco.messages.ConfigResponse.secrets:type_name -> stucco.messages.ConfigResponse.SecretsConfig
+	60,  // 95: stucco.messages.ConfigResponse.subscriptions:type_name -> stucco.messages.ConfigResponse.SubscriptionConfig
+	65,  // 96: stucco.messages.ConfigResponse.subscriptionConfigs:type_name -> stucco.messages.ConfigResponse.SubscriptionConfigsEntry
+	4,   // 97: stucco.messages.ConfigResponse.error:type_name -> stucco.messages.Error
+	3,   // 98: stucco.messages.ObjectValue.PropsEntry.value:type_name -> stucco.messages.Value
+	3,   // 99: stucco.messages.Directive.ArgumentsEntry.value:type_name -> stucco.messages.Value
+	3,   // 100: stucco.messages.Selection.ArgumentsEntry.value:type_name -> stucco.messages.Value
+	3,   // 101: stucco.messages.FieldResolveInfo.VariableValuesEntry.value:type_name -> stucco.messages.Value
+	3,   // 102: stucco.messages.FieldResolveRequest.ArgumentsEntry.value:type_name -> stucco.messages.Value
+	3,   // 103: stucco.messages.InterfaceResolveTypeInfo.VariableValuesEntry.value:type_name -> stucco.messages.Value
+	3,   // 104: stucco.messages.UnionResolveTypeInfo.VariableValuesEntry.value:type_name -> stucco.messages.Value
+	3,   // 105: stucco.messages.StreamInfo.VariableValuesEntry.value:type_name -> stucco.messages.Value
+	3,   // 106: stucco.messages.StreamRequest.ArgumentsEntry.value:type_name -> stucco.messages.Value
+	3,   // 107: stucco.messages.SubscriptionConnectionRequest.VariableValuesEntry.value:type_name -> stucco.messages.Value
+	3,   // 108: stucco.messages.SubscriptionListenRequest.VariableValuesEntry.value:type_name -> stucco.messages.Value
+	54,  // 109: stucco.messages.ConfigResponse.InterfaceConfig.environment:type_name -> stucco.messages.ConfigResponse.Environment
+	5,   // 110: stucco.messages.ConfigResponse.InterfaceConfig.resolveType:type_name -> stucco.messages.Function
+	54,  // 111: stucco.messages.ConfigResponse.ResolverConfig.environment:type_name -> stucco.messages.ConfigResponse.Environment
+	5,   // 112: stucco.messages.ConfigResponse.ResolverConfig.resolve:type_name -> stucco.messages.Function
+	54,  // 113: stucco.messages.ConfigResponse.ScalarConfig.environment:type_name -> stucco.messages.ConfigResponse.Environment
+	5,   // 114: stucco.messages.ConfigResponse.ScalarConfig.parse:type_name -> stucco.messages.Function
+	5,   // 115: stucco.messages.ConfigResponse.ScalarConfig.serialize:type_name -> stucco.messages.Function
+	54,  // 116: stucco.messages.ConfigResponse.UnionConfig.environment:type_name -> stucco.messages.ConfigResponse.Environment
+	5,   // 117: stucco.messages.ConfigResponse.UnionConfig.resolveType:type_name -> stucco.messages.Function
+	66,  // 118: stucco.messages.ConfigResponse.SecretsConfig.secrets:type_name -> stucco.messages.ConfigResponse.SecretsConfig.SecretsEntry
+	54,  // 119: stucco.messages.ConfigResponse.SubscriptionConfig.environment:type_name -> stucco.messages.ConfigResponse.Environment
+	0,   // 120: stucco.messages.ConfigResponse.SubscriptionConfig.kind:type_name -> stucco.messages.ConfigResponse.SubscriptionConfig.SubscriptionKind
+	5,   // 121: stucco.messages.ConfigResponse.SubscriptionConfig.createConnection:type_name -> stucco.messages.Function
+	5,   // 122: stucco.messages.ConfigResponse.SubscriptionConfig.listen:type_name -> stucco.messages.Function
+	55,  // 123: stucco.messages.ConfigResponse.InterfacesEntry.value:type_name -> stucco.messages.ConfigResponse.InterfaceConfig
+	56,  // 124: stucco.messages.ConfigResponse.ResolversEntry.value:type_name -> stucco.messages.ConfigResponse.ResolverConfig
+	57,  // 125: stucco.messages.ConfigResponse.ScalarsEntry.value:type_name -> stucco.messages.ConfigResponse.ScalarConfig
+	58,  // 126: stucco.messages.ConfigResponse.UnionsEntry.value:type_name -> stucco.messages.ConfigResponse.UnionConfig
+	60,  // 127: stucco.messages.ConfigResponse.SubscriptionConfigsEntry.value:type_name -> stucco.messages.ConfigResponse.SubscriptionConfig
+	128, // [128:128] is the sub-list for method output_type
+	128, // [128:128] is the sub-list for method input_type
+	128, // [128:128] is the sub-list for extension type_name
+	128, // [128:128] is the sub-list for extension extendee
+	0,   // [0:128] is the sub-list for field type_name
 }
 
 func init() { file_messages_messages_proto_init() }
@@ -3680,6 +4494,114 @@ func file_messages_messages_proto_init() {
 				return nil
 			}
 		}
+		file_messages_messages_proto_msgTypes[38].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ConfigRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_messages_messages_proto_msgTypes[39].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ConfigResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_messages_messages_proto_msgTypes[53].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ConfigResponse_Environment); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_messages_messages_proto_msgTypes[54].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ConfigResponse_InterfaceConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_messages_messages_proto_msgTypes[55].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ConfigResponse_ResolverConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_messages_messages_proto_msgTypes[56].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ConfigResponse_ScalarConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_messages_messages_proto_msgTypes[57].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ConfigResponse_UnionConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_messages_messages_proto_msgTypes[58].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ConfigResponse_SecretsConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_messages_messages_proto_msgTypes[59].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ConfigResponse_SubscriptionConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	file_messages_messages_proto_msgTypes[2].OneofWrappers = []interface{}{
 		(*Value_I)(nil),
@@ -3703,13 +4625,14 @@ func file_messages_messages_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_messages_messages_proto_rawDesc,
-			NumEnums:      0,
-			NumMessages:   51,
+			NumEnums:      1,
+			NumMessages:   66,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
 		GoTypes:           file_messages_messages_proto_goTypes,
 		DependencyIndexes: file_messages_messages_proto_depIdxs,
+		EnumInfos:         file_messages_messages_proto_enumTypes,
 		MessageInfos:      file_messages_messages_proto_msgTypes,
 	}.Build()
 	File_messages_messages_proto = out.File

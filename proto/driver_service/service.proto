@@ -6,6 +6,7 @@ option go_package="github.com/graphql-editor/stucco_proto/go/driver_service";
 import "messages/messages.proto";
 
 service Driver {
+  rpc Config(stucco.messages.ConfigRequest) returns (stucco.messages.ConfigResponse);
   rpc FieldResolve(stucco.messages.FieldResolveRequest) returns (stucco.messages.FieldResolveResponse);
   rpc InterfaceResolveType(stucco.messages.InterfaceResolveTypeRequest) returns (stucco.messages.InterfaceResolveTypeResponse);
   rpc ScalarParse(stucco.messages.ScalarParseRequest) returns (stucco.messages.ScalarParseResponse);

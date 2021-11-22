@@ -236,3 +236,53 @@ message SubscriptionListenMessage {
   bool next = 1;
   Value payload = 2;
 }
+
+message ConfigRequest {}
+
+message ConfigResponse {
+  message Environment {
+    string provider = 1;
+    string runtime = 2;
+  }
+  message InterfaceConfig {
+    Environment environment = 1;
+    Function resolveType = 2;
+  }
+  message ResolverConfig {
+    Environment environment = 1;
+    Function resolve = 2;
+  }
+  message ScalarConfig {
+    Environment environment = 1;
+    Function parse = 2;
+    Function serialize = 3;
+  }
+  message UnionConfig {
+    Environment environment = 1;
+    Function resolveType = 2;
+  }
+  message SecretsConfig {
+    map<string, string> secrets = 1;
+  }
+  message SubscriptionConfig {
+    enum SubscriptionKind {
+      BLOCKING = 0;
+      EXTERNAL = 1;
+      REDIRECT = 2;
+    }
+    Environment environment = 1;
+    SubscriptionKind kind = 2;
+    Function createConnection = 3;
+    Function listen = 4;
+  }
+  Environment environment = 1;
+  map<string, InterfaceConfig> interfaces = 2;
+  map<string, ResolverConfig> resolvers = 3;
+  map<string, ScalarConfig> scalars = 4;
+  string schema = 5;
+  map<string, UnionConfig> unions = 6;
+  SecretsConfig secrets = 7;
+  SubscriptionConfig subscriptions = 8;
+  map<string, SubscriptionConfig> subscriptionConfigs = 9;
+  Error error = 10;
+}
