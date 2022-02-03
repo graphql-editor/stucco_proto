@@ -288,10 +288,11 @@ message ConfigResponse {
 }
 
 message AuthorizeRequest {
-  string query = 1;
-  map<string, Value> variableValues = 2;
-  string operationName = 3;
-  Value protocol = 4;
+  Function function = 1;
+  string query = 2;
+  map<string, Value> variableValues = 3;
+  string operationName = 4;
+  Value protocol = 5;
 }
 
 message AuthorizeResponse {
