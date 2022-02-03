@@ -291,6 +291,7 @@ message AuthorizeRequest {
   string query = 1;
   map<string, Value> variableValues = 2;
   string operationName = 3;
+  Value protocol = 4;
 }
 
 message AuthorizeResponse {
